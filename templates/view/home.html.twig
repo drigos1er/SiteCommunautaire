@@ -2,12 +2,97 @@
 
 
 
-
+{% block title %}SnowTricks|Accueil{% endblock %}
 
         {% block body %}
 
 
-       TEST HOME
+            <!-- Section: intro -->
+            <section id="intro" class="intro">
+
+                <div class="slogan">
+                    <h2>BIENVENUE SUR  <span class="text_color">SNOWTRICKS</span> </h2>
+                    <h4>LA 1ère PLATEFORME D'APPRENTISSAGE DE FIGURES ET DE RENCONTRES DES AMOUREUX DE SNOWBOARD</h4>
+                </div>
+                <div class="page-scroll">
+                    <a href="#about" class="btn btn-circle">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
+                </div>
+            </section>
+            <!-- /Section: intro -->
+
+            <!-- Section: about -->
+            <section id="about" class="home-section text-center">
+                <div class="heading-about">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="wow bounceInDown" data-wow-delay="0.4s">
+                                    <div class="section-heading">
+                                        <h2>LES FIGURES</h2>
+                                        <i class="fa fa-2x fa-angle-down"></i>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-lg-2 col-lg-offset-5">
+                            <hr class="marginbot-50">
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% set i = 0 %}
+                        {% for figure in figures %}
+
+                        <div class="col-md-3">
+                            <div class="wow bounceInUp" data-wow-delay="0.2s">
+                                <div class="team boxed-grey">
+                                    <div class="inner">
+
+                                        <div class="avatar"><img src="{{ asset('build/img/team/1.jpg') }}" alt="" class="img-responsive img-circle" /></div>
+
+                                        <h5>{{ figure.name }}</h5>
+                                        <a href class="btn btn-warning btn-xsm">  <i class="fa fa-2x fa-edit"></i></a>
+                                        <a href class="btn btn-danger btn-xsm">  <i class="fa fa-2x fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            {% set i= i + 1 %}
+
+                        {% endfor %}
+
+
+
+
+
+
+                        <div style="text-align: right" class="col-md-12 col-lg-12" >
+
+                                        <div class="page-scroll marginbot-30">
+                                            <a href="#about" id="totop" class="btn btn-circle" style="background-color: #AA3333">
+                                                <i class="fa fa-angle-double-up animated"></i>
+                                            </a>
+                                        </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+
+            </section>
+            <!-- /Section: about -->
+
+
 
         {% endblock %}
 
