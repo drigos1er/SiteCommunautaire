@@ -8,3 +8,12 @@ sitecom_homepage:
 sitecom_registrationpage:
   path:     /register
   defaults: { _controller: App\Controller\SecurityController::registration }
+
+security_login:
+  path:     /login
+  defaults: { _controller: App\Controller\SecurityController::login }
+
+
+security_logout:
+  path:     /logout
+  defaults: { _controller: App\Controller\SecurityController::logout }
