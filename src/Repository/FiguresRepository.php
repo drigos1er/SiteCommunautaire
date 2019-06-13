@@ -19,6 +19,11 @@ class FiguresRepository extends ServiceEntityRepository
         parent::__construct($registry, Figures::class);
     }
 
+    public function findLastFigures()
+    {
+        return $this->findBy([], ['updatedate' => 'DESC']);
+    }
+
     // /**
     //  * @return Figures[] Returns an array of Figures objects
     //  */
