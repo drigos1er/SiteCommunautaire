@@ -4,7 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\AuthenticatedUser;
 use App\Entity\Figures;
-use App\Entity\Group;
+
 use App\Entity\GroupFigures;
 use App\Entity\Media;
 use App\Entity\Messages;
@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
             $usera->setLastname($faker->lastName());
             $usera->setEmail($faker->email);
             $usera->setContact($faker->phoneNumber);
-            $usera->setPasswd($faker->password(6, 6));
+            $usera->setPassword($faker->password(6, 6));
             $usera->setPicture($faker->url);
             $usera->setCreatedate($faker->dateTime());
             $usera->setUpdatedate($faker->dateTime());

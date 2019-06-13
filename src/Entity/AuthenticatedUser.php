@@ -5,11 +5,17 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AuthenticatedUserRepository")
+ * @UniqueEntity(fields={"username","email"},
+ * message="Cette valeur est dejà utilisé par un autre utilisateur"
+ * )
  */
-class AuthenticatedUser
+class AuthenticatedUser implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -57,8 +63,16 @@ class AuthenticatedUser
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(min="6", minMessage="Votre mot de passe doit faire minimum 6 caractères")
+
      */
-    private $passwd;
+    private $password;
+
+
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Veuillez saisir un mot de passe identique")
+     */
+    public $confirm_password;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -140,14 +154,14 @@ class AuthenticatedUser
         return $this;
     }
 
-    public function getPasswd(): ?string
+    public function getPassword(): ?string
     {
-        return $this->passwd;
+        return $this->password;
     }
 
-    public function setPasswd(string $passwd): self
+    public function setPassword(string $password): self
     {
-        $this->passwd = $passwd;
+        $this->password = $password;
 
         return $this;
     }
@@ -220,8 +234,47 @@ class AuthenticatedUser
     }
 
 
+    /**
+     * Returns the roles granted to the user.
+     *
+     *     public function getRoles()
+     *     {
+     *         return ['ROLE_USER'];
+     *     }
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return (Role|string)[] The user roles
+     */
+    public function getRoles()
+    {
+       return ['ROLE_USERAUT'];
+    }
 
 
 
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
 
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
 }

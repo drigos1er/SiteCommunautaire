@@ -1,0 +1,117 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block title %}SnowTricks|Création de Compte{% endblock %}
+
+        {% block body %}
+
+
+
+            <!-- Section: contact -->
+            <section id="contact" class="home-section text-center">
+                <div class="heading-contact">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="wow bounceInDown" data-wow-delay="0.4s">
+                                    <div class="section-heading">
+                                        <h2>CREER UN COMPTE</h2>
+                                        <i class="fa fa-2x fa-angle-down"></i>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-lg-2 col-lg-offset-5">
+                            <hr class="marginbot-50">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="boxed-grey">
+
+                                <div id="sendmessage">Your message has been sent. Thank you!</div>
+                                <div id="errormessage"></div>
+                                {{ form_start(form) }}
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <div class="form-group">
+
+                                                {{ form_row(form.username,{'label': 'Nom d\'utilisateur','attr': {'placeholder': 'Nom d\'utilisateur','class': 'form-control'}}) }}
+
+                                                <div class="validation"> </div>
+                                            </div>
+                                            <div class="form-group">
+
+                                                <div class="form-group">
+                                                    {{ form_row(form.firstname,{'label': 'Nom ','attr': {'placeholder': 'Nom ','class': 'form-control'}}) }}
+
+                                                    <div class="validation"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+
+                                                {{ form_row(form.lastname,{'label': 'Prénoms ','attr': {'placeholder': 'Prénoms ','class': 'form-control'}}) }}
+
+                                                <div class="validation"> </div>
+                                            </div>
+                                            <div class="form-group">
+
+
+                                                {{ form_row(form.email,{'label': 'Adresse email ','attr': {'Placeholder': 'Adresse email','class': 'form-control'}}) }}
+
+                                                <div class="validation"> </div>
+                                            </div>
+                                            <div class="form-group">
+
+
+                                                {{ form_row(form.contact,{'label': 'Téléphone ','attr': {'Placeholder': 'Téléphone','class': 'form-control'}}) }}
+
+                                                <div class="validation"> </div>
+                                            </div>
+                                            <div class="form-group">
+
+                                                {{ form_row(form.password,{'label': 'Mot de passe','attr': {'Placeholder': 'Mot de passe','class': 'form-control'}}) }}
+
+
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                {{ form_row(form.confirm_password,{'label': 'Confirmer mot de passe','attr': {'Placeholder': 'Répétez le mot de passe','class': 'form-control'}}) }}
+
+                                                <div class="validation"> </div>
+                                            </div>
+                                            <div class="form-group">
+
+                                                {{ form_row(form.picture,{'label': 'photo de Profil ','attr': {'Placeholder': 'Photo de profil','class': 'form-control'}}) }}
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
+                                                S'inscrire</button>
+                                        </div>
+                                    </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+            <!-- /Section: contact -->
+
+
+        {% endblock %}
+
