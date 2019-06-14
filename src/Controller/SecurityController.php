@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
 class SecurityController extends AbstractController
@@ -30,7 +31,7 @@ class SecurityController extends AbstractController
 
             $manager->persist($useraut);
             $manager->flush();
-
+     $this->addFlash('success','Compte crée avec succès');
             return $this->redirectToRoute('security_login');
         }
        return $this->render('security/registration.html.twig', array('form'=>$form->createView()));
@@ -38,10 +39,13 @@ class SecurityController extends AbstractController
 
 
 
-    public function login()
+    public function login( AuthenticationUtils $authenticationUtils)
     {
 
-        return $this->render('security/login.html.twig');
+        return $this->render('security/login.html.twig', [
+            'error' =>$authenticationUtils->getLastAuthenticationError(),
+            'last_username' =>$authenticationUtils->getLastUsername()
+        ]);
     }
 
 
