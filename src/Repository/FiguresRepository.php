@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Figures;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -21,8 +23,28 @@ class FiguresRepository extends ServiceEntityRepository
 
     public function findLastFigures()
     {
-        return $this->findBy([], ['updatedate' => 'DESC']);
+        return $this->findBy([], ['updatedate' => 'DESC'], 15,
+            0 );
     }
+
+    public function findAllFiguresQuery(): Query
+    {
+        return $this->findFiguresQuery()
+            ->getQuery() ;
+    }
+
+
+
+       private function findFiguresQuery(): ? QueryBuilder
+       {
+           return $this->createQueryBuilder('f')
+               ->orderBy('f.updatedate', 'DESC')
+
+
+           ;
+       }
+
+
 
     // /**
     //  * @return Figures[] Returns an array of Figures objects

@@ -17,3 +17,10 @@ security_login:
 security_logout:
   path:     /logout
   defaults: { _controller: App\Controller\SecurityController::logout }
+
+
+
+
+sitecom_listfigures:
+  path:     /listfigures
+  defaults: { _controller: App\Controller\HomeController::listfigures }
