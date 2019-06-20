@@ -33,9 +33,16 @@ class AuthenticatedUser implements UserInterface
     private $messages;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Figures", mappedBy="authenticateduser")
+     */
+    private $figures;
+
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
+        $this->figures = new ArrayCollection();
     }
 
 
@@ -250,6 +257,46 @@ class AuthenticatedUser implements UserInterface
 
         return $this;
     }
+
+
+    /**
+     * @return Collection|Figures[]
+     */
+    public function getFigures(): Collection
+    {
+        return $this->figures;
+    }
+
+    public function addFigure(Figures $figure): self
+    {
+        if (!$this->figures->contains($figure)) {
+            $this->figures[] = $figure;
+            $figure->setAuthenticateduser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFigure(Figures $figure): self
+    {
+        if ($this->figures->contains($figure)) {
+            $this->figures->removeElement($figure);
+            // set the owning side to null (unless already changed)
+            if ($figure->getAuthenticateduser() === $this) {
+                $figure->setAuthenticateduser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+
+
+
+
+
 
 
     /**

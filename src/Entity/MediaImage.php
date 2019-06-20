@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MediaRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\MediaImageRepository")
  */
-class Media
+class MediaImage
 {
     /**
      * @ORM\Id()
@@ -19,15 +19,11 @@ class Media
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Figures", mappedBy="media")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Figures", inversedBy="mediaimage")
      */
     private $figures;
 
 
-    public function __construct()
-    {
-        $this->figures = new ArrayCollection();
-    }
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -37,12 +33,12 @@ class Media
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $type;
+    private $alt;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $state;
+    public function __construct()
+    {
+        $this->figures = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,26 +57,14 @@ class Media
         return $this;
     }
 
-    public function getType(): ?string
+    public function getAlt(): ?string
     {
-        return $this->type;
+        return $this->alt;
     }
 
-    public function setType(string $type): self
+    public function setAlt(string $alt): self
     {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    public function getState(): ?bool
-    {
-        return $this->state;
-    }
-
-    public function setState(?bool $state): self
-    {
-        $this->state = $state;
+        $this->alt = $alt;
 
         return $this;
     }
@@ -97,7 +81,7 @@ class Media
     {
         if (!$this->figures->contains($figure)) {
             $this->figures[] = $figure;
-            $figure->setMedia($this);
+            $figure->setMediaimage($this);
         }
 
         return $this;
@@ -108,13 +92,21 @@ class Media
         if ($this->figures->contains($figure)) {
             $this->figures->removeElement($figure);
             // set the owning side to null (unless already changed)
-            if ($figure->getMedia() === $this) {
-                $figure->setMedia(null);
+            if ($figure->getMediaimage() === $this) {
+                $figure->setMediaimage(null);
             }
         }
 
         return $this;
     }
+
+    public function setFigures(?Figures $figures): self
+    {
+        $this->figures = $figures;
+
+        return $this;
+    }
+
 
 
 

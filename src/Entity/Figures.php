@@ -24,22 +24,39 @@ class Figures
     private $messages;
 
 
-    public function __construct()
-    {
-        $this->messages = new ArrayCollection();
-    }
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Media", inversedBy="figures")
-     * @ORM\JoinColumn(name="media_id", referencedColumnName="id",onDelete="SET NULL")
+     * @ORM\OneToMany(targetEntity="App\Entity\MediaImage", mappedBy="figures")
+     * @ORM\JoinColumn(name="mediaimage_id", referencedColumnName="id",onDelete="SET NULL")
      */
-    private $media;
+    private $mediaimage;
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\MediaVideo", mappedBy="figures")
+     * @ORM\JoinColumn(name="mediavideo_id", referencedColumnName="id",onDelete="SET NULL")
+     */
+    private $mediavideo;
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\GroupFigures", inversedBy="figures")
-     * @ORM\JoinColumn(name="group_id", referencedColumnName="id",onDelete="SET NULL")
+     * @ORM\JoinColumn(name="groupfigures_id", referencedColumnName="id",onDelete="SET NULL")
      */
     private $groupfigures;
+
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\AuthenticatedUser", inversedBy="figures")
+     * @ORM\JoinColumn(name="authenticateduser_id", referencedColumnName="id",onDelete="SET NULL")
+     */
+    private $authenticateduser;
+
+
+
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -60,6 +77,13 @@ class Figures
      * @ORM\Column(type="datetime")
      */
     private $updatedate;
+
+    public function __construct()
+    {
+        $this->messages = new ArrayCollection();
+        $this->mediaimage = new ArrayCollection();
+        $this->mediavideo = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -145,14 +169,64 @@ class Figures
         return $this;
     }
 
-    public function getMedia(): ?Media
+    /**
+     * @return Collection|MediaImage[]
+     */
+    public function getMediaimage(): Collection
     {
-        return $this->media;
+        return $this->mediaimage;
     }
 
-    public function setMedia(?Media $media): self
+    public function addMediaimage(MediaImage $mediaimage): self
     {
-        $this->media = $media;
+        if (!$this->mediaimage->contains($mediaimage)) {
+            $this->mediaimage[] = $mediaimage;
+            $mediaimage->setFigures($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMediaimage(MediaImage $mediaimage): self
+    {
+        if ($this->mediaimage->contains($mediaimage)) {
+            $this->mediaimage->removeElement($mediaimage);
+            // set the owning side to null (unless already changed)
+            if ($mediaimage->getFigures() === $this) {
+                $mediaimage->setFigures(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MediaVideo[]
+     */
+    public function getMediavideo(): Collection
+    {
+        return $this->mediavideo;
+    }
+
+    public function addMediavideo(MediaVideo $mediavideo): self
+    {
+        if (!$this->mediavideo->contains($mediavideo)) {
+            $this->mediavideo[] = $mediavideo;
+            $mediavideo->setFigures($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMediavideo(MediaVideo $mediavideo): self
+    {
+        if ($this->mediavideo->contains($mediavideo)) {
+            $this->mediavideo->removeElement($mediavideo);
+            // set the owning side to null (unless already changed)
+            if ($mediavideo->getFigures() === $this) {
+                $mediavideo->setFigures(null);
+            }
+        }
 
         return $this;
     }
@@ -168,6 +242,22 @@ class Figures
 
         return $this;
     }
+
+    public function getAuthenticateduser(): ?AuthenticatedUser
+    {
+        return $this->authenticateduser;
+    }
+
+    public function setAuthenticateduser(?AuthenticatedUser $authenticateduser): self
+    {
+        $this->authenticateduser = $authenticateduser;
+
+        return $this;
+    }
+
+
+
+
 
 
 

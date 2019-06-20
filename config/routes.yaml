@@ -20,6 +20,11 @@ security_logout:
 
 
 
+sitecom_createfigure:
+  path:     /createfigure
+  defaults: { _controller: App\Controller\HomeController::createfigure }
+
+
 
 sitecom_listfigures:
   path:     /listfigures
