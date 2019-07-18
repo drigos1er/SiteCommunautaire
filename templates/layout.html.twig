@@ -45,20 +45,27 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ path('sitecom_homepage') }}">Accueil</a></li>
                 <li><a href="#about">Figures</a></li>
-              {%if not app.user  %}
 
-
-                  <li><a href="{{ path('security_login') }}">Se Connecter</a></li>
-
-                  {% else %}
-
-                      <li><a href="{{ path('security_logout') }}">Se Deconnecter</a></li>
-
-
-
-              {% endif %}
                 <li><a href="#contact">Contact</a></li>
+                {%if not app.user  %}
 
+
+                    <li><a href="{{ path('security_login') }}">Se Connecter</a></li>
+
+                {% else %}
+
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }} <b class="caret"></b><img src="../public/images/users/{{ app.user.picture}}" alt="" class="img-responsive img-circle"  style="height: 40px; width: 40px;"/></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="{{ path('security_logout') }}">Deconnexion</a></li>
+
+                        </ul>
+                    </li>
+
+                {% endif %}
             </ul>
         </div>
         <!-- /.navbar-collapse -->

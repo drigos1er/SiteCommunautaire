@@ -7,6 +7,8 @@
         "ext-iconv": "*",
         "doctrine/doctrine-fixtures-bundle": "3.1.0",
         "friendsofphp/php-cs-fixer": "3.0.x-dev",
+        "knplabs/knp-paginator-bundle": "^3.0",
+        "liip/imagine-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "4.2.*",
@@ -28,7 +30,8 @@
         "symfony/web-link": "4.2.*",
         "symfony/webpack-encore-bundle": "^1.6",
         "symfony/webpack-encore-pack": "^1.0",
-        "symfony/yaml": "4.2.*"
+        "symfony/yaml": "4.2.*",
+        "vich/uploader-bundle": "^1.9"
     },
     "require-dev": {
         "hautelook/alice-bundle": "^2.5",

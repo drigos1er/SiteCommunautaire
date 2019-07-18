@@ -5,15 +5,18 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AuthenticatedUserRepository")
- * @UniqueEntity(fields={"username","email"},
+ * @UniqueEntity(fields={"email"},
  * message="Cette valeur est dejà utilisé par un autre utilisateur"
  * )
+ * @Vich\Uploadable
  */
 class AuthenticatedUser implements UserInterface
 {
@@ -38,11 +41,25 @@ class AuthenticatedUser implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(min="4", minMessage="Votre login doit faire minimum 4 caractères")
+     * @Assert\NotNull
      */
     private $username;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="users_image", fileNameProperty="picture")
+     *
+     * @var File
+     */
+    private $imagefile;
+
+
+
+    /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotNull
      */
     private $firstname;
 
@@ -58,6 +75,7 @@ class AuthenticatedUser implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotNull
      */
     private $contact;
 
@@ -75,7 +93,7 @@ class AuthenticatedUser implements UserInterface
     public $confirm_password;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $picture;
 
@@ -277,4 +295,26 @@ class AuthenticatedUser implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+
+
+    public function getImagefile(): ?File
+    {
+        return $this->imagefile;
+    }
+
+    public function setImagefile(File $imagefile): self
+    {
+        $this->imagefile = $imagefile;
+
+        // Only change the updated af if the file is really uploaded to avoid database updates.
+        // This is needed when the file should be set when loading the entity.
+        if ($this->imagefile instanceof UploadedFile) {
+            $this->updatedate = new \DateTime('now');
+        }
+
+
+        return $this;
+    }
+
 }
