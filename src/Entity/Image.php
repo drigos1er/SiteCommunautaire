@@ -33,7 +33,7 @@ class Image
     private $name;
 
     /**
-     * @Assert\Length( max=25, maxMessage="La description de l'image ne doit pas depasser 25 caractères")
+     * @Assert\Length( max=150, maxMessage="La description de l'image ne doit pas depasser 150 caractères")
      * @ORM\Column(type="string", length=100)
      */
     private $alt;

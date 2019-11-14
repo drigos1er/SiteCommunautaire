@@ -85,18 +85,22 @@ class TrickController extends AbstractController
 
             foreach ($trick->getImage() as $image){
 
-                $image->setTrick($trick);
+                $image->setTricks($trick);
                 $manager->persist($image);
             }
+            foreach ($trick->getVideo() as $video){
 
+                $video->setTricks($trick);
+                $manager->persist($video);
+            }
 
             $datecreate = new \Datetime();
 
 
-            $trick->setCreatedate($datecreate);
+
             $trick->setUpdatedate($datecreate);
 
-            $trick->setAuthenticateduser($this->get('session')->get('last_username'));
+            $trick->setAuthenticateduser($this->getUser());
 
 
             $manager->persist($trick);
