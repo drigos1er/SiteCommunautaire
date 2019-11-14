@@ -20,7 +20,7 @@ security_logout:
 
 
 
-sitecom_createtrick:
+sitecom_addtrick:
   path:     /addtrick
   defaults: { _controller: App\Controller\TrickController::addtrick }
 
