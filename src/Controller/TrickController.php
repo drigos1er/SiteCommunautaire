@@ -163,7 +163,7 @@ class TrickController extends AbstractController
      * @param ObjectManager $manager
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Security("is_granted('ROLE_USERAUT') and user==trick.getAuthenticateduser()" ,message="Vou n'êtes pas autoriser à éffectuer cette opération")
+     * @Security("is_granted('ROLE_USERAUT') and user==trick.getAuthenticateduser()" ,message="Vous n'êtes pas autoriser à éffectuer cette opération")
      */
     public function deletetrick(Tricks $trick, ObjectManager $manager, Request $request)
     {
