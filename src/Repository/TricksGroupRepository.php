@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\GroupFigures;
+use App\Entity\TricksGroup;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method GroupFigures|null find($id, $lockMode = null, $lockVersion = null)
- * @method GroupFigures|null findOneBy(array $criteria, array $orderBy = null)
- * @method GroupFigures[]    findAll()
- * @method GroupFigures[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method TricksGroup|null find($id, $lockMode = null, $lockVersion = null)
+ * @method TricksGroup|null findOneBy(array $criteria, array $orderBy = null)
+ * @method TricksGroup[]    findAll()
+ * @method TricksGroup[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class GroupFiguresRepository extends ServiceEntityRepository
+class TricksGroupRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, GroupFigures::class);
+        parent::__construct($registry, TricksGroup::class);
     }
 
     // /**

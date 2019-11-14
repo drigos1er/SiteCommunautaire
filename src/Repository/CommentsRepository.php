@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\MediaVideo;
+use App\Entity\Comments;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method MediaVideo|null find($id, $lockMode = null, $lockVersion = null)
- * @method MediaVideo|null findOneBy(array $criteria, array $orderBy = null)
- * @method MediaVideo[]    findAll()
- * @method MediaVideo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Comments|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Comments|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Comments[]    findAll()
+ * @method Comments[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MediaVideoRepository extends ServiceEntityRepository
+class CommentsRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, MediaVideo::class);
+        parent::__construct($registry, Comments::class);
     }
 
     // /**
-    //  * @return Media[] Returns an array of Media objects
+    //  * @return Messages[] Returns an array of Messages objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class MediaVideoRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Media
+    public function findOneBySomeField($value): ?Messages
     {
         return $this->createQueryBuilder('m')
             ->andWhere('m.exampleField = :val')

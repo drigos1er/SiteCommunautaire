@@ -1,0 +1,168 @@
+
+{% extends 'layout.html.twig' %}
+
+
+
+{% block title %}SnowTricks|Affichage  de figure{% endblock %}
+
+        {% block body %}
+
+
+
+            <!-- Section: contact -->
+            <section id="contact" class="home-section text-center">
+                <div class="heading-contact">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 ">
+                                <div class="wow bounceInDown" data-wow-delay="0.4s">
+                                    {% for img in shtrick.image %}  {% if loop.first %}
+
+                                        <div class="section-heading"  style="background-image: url({{ img.name }} ); height: 300px; width: 1200px;">
+                                            <h2 style="color: white">{{ shtrick.name }} </h2>
+                                            <i class="fa fa-2x fa-angle-down"></i>
+
+                                        </div>
+
+
+                                    {% endif %} {% endfor %}
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+                  <br>  <div class="container">
+                        <div class="row">
+                            {% for img in shtrick.image %}   <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="{{ img.name}}" width=""/></div>
+                            {% endfor %}
+
+<br>
+                            {% for vid in shtrick.video %}  <div class="col-md-3 col-sm-4 col-xs-6" >
+                                <div class="embed-responsive embed-responsive-1by1">
+                                    {{vid.name|raw}}
+                                </div></div>
+                            {% endfor %}
+
+                        </div>
+
+                </div>
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-lg-2 col-lg-offset-5">
+                            <hr class="marginbot-50">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 ">
+                            <div class="boxed-grey">
+
+                                <span style="color: darkblue"> <i class="fa fa-user" style="color:darkblue"></i>
+                                    Crée par
+
+
+
+                                            {{ shtrick.authenticateduser.username}} &nbsp;
+
+
+                                    le  {{ shtrick.createdate|date("m/d/Y") }}
+                                </span>
+                                &nbsp;&nbsp;&nbsp;
+
+                                <span style="color: darkblue"> <i class="fa fa-tags" style="color:darkblue"></i> Descritption: {{ shtrick.description}} </span> &nbsp;
+
+                          &nbsp;&nbsp;<span  style="color: darkblue"> <i class="fa fa-calendar" style="color:darkblue"></i> Groupe:</span>
+
+                                        {{  shtrick.tricksgroup.name}}
+
+
+                                &nbsp;
+
+                                &nbsp;&nbsp;
+
+                                <span style="color: darkblue"> <i class="fa fa-clock-o" style="color:darkblue"></i>Dernière mise à jour: {{ shtrick.updatedate|date("m/d/Y  H:m:s") }}   </span> &nbsp;
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                           {% if shtrick.comments|length >0 %}
+                               <h2 class="mb-3">Les Commentaires</h2>
+                               {% for comment in shtrick.comments %}
+                               <div class="bg-light rounded mb-3 px-3 py-3">
+                                   <strong>{{ comment.authenticateduser.username }}</strong> <i class="fa fa-comments-o" style="color:darkblue"></i>:
+                                   <blockquote>
+                                       {{ comment.content }}
+
+<br>
+                                       <span style="color: #2a6496; font-size: 11px; font-style: italic">Dernière mise à jour: {{ comment.updatedate|date("m/d/Y  H:m:s") }}</span>
+                                   </blockquote>
+
+                               </div>
+                               {% endfor %}
+                            {% else  %}
+                               <H2>Aucun commentaire sur cette figure</H2>
+                            {% endif %}
+                        </div>
+
+<br>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="form-group">
+
+                                {{ form_row(form.content,{'label': 'Ajouter un commentaire','attr': {'placeholder': 'Ajouter un commentaire','class': 'form-control'}}) }}
+
+                                <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
+                                    Envoyer</button>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+            </section>
+            <!-- /Section: contact -->
+
+
+        {% endblock %}
+
+
+
+
+
+
+

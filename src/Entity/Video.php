@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MediaVideoRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\VideoRepository")
  */
-class MediaVideo
+class Video
 {
     /**
      * @ORM\Id()
@@ -19,19 +19,19 @@ class MediaVideo
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Figures", inversedBy="mediavideo")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tricks", inversedBy="video")
      */
-    private $figures;
+    private $tricks;
 
 
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=255)
      */
     private $alt;
 
@@ -64,14 +64,14 @@ class MediaVideo
         return $this;
     }
 
-    public function getFigures(): ?Figures
+    public function getTricks(): ?Tricks
     {
-        return $this->figures;
+        return $this->tricks;
     }
 
-    public function setFigures(?Figures $figures): self
+    public function setTricks(?Tricks $tricks): self
     {
-        $this->figures = $figures;
+        $this->tricks = $tricks;
 
         return $this;
     }

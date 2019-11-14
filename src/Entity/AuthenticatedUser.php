@@ -13,10 +13,11 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AuthenticatedUserRepository")
- * @UniqueEntity(fields={"email"},
+ * @UniqueEntity(fields={"username"},
  * message="Cette valeur est dejà utilisé par un autre utilisateur"
  * )
  * @Vich\Uploadable
+ * @ORM\HasLifecycleCallbacks()
  */
 class AuthenticatedUser implements UserInterface
 {
@@ -28,21 +29,21 @@ class AuthenticatedUser implements UserInterface
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Messages", mappedBy="authenticateduser")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="authenticateduser")
      */
-    private $messages;
+    private $comments;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Figures", mappedBy="authenticateduser")
+     * @ORM\OneToMany(targetEntity="App\Entity\Tricks", mappedBy="authenticateduser")
      */
-    private $figures;
+    private $tricks;
 
 
     public function __construct()
     {
         $this->messages = new ArrayCollection();
-        $this->figures = new ArrayCollection();
+        $this->tricks = new ArrayCollection();
     }
 
 
@@ -113,6 +114,25 @@ class AuthenticatedUser implements UserInterface
      * @ORM\Column(type="datetime")
      */
     private $updatedate;
+
+
+    /**
+     * Permet de générer la date de création et de modification
+     * @ORM\PrePersist
+     * @throws \Exception
+     */
+    public function prePersist() {
+        if(empty($this->createdate)){
+            $this->createdate =new \DateTime();
+        }
+
+        if(empty($this->updatedate)){
+            $this->updatedate=new \DateTime();
+        }
+    }
+
+
+
 
     public function getId(): ?int
     {
@@ -228,30 +248,30 @@ class AuthenticatedUser implements UserInterface
     }
 
     /**
-     * @return Collection|Messages[]
+     * @return Collection|Comments[]
      */
-    public function getMessages(): Collection
+    public function getComments(): Collection
     {
-        return $this->messages;
+        return $this->comments;
     }
 
-    public function addMessage(Messages $message): self
+    public function addMessage(Comments $comment): self
     {
-        if (!$this->messages->contains($message)) {
-            $this->messages[] = $message;
-            $message->setAuthenticateduser($this);
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setAuthenticateduser($this);
         }
 
         return $this;
     }
 
-    public function removeMessage(Messages $message): self
+    public function removeMessage(Comments $comment): self
     {
-        if ($this->messages->contains($message)) {
-            $this->messages->removeElement($message);
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
             // set the owning side to null (unless already changed)
-            if ($message->getAuthenticateduser() === $this) {
-                $message->setAuthenticateduser(null);
+            if ($comment->getAuthenticateduser() === $this) {
+                $comment->setAuthenticateduser(null);
             }
         }
 
@@ -260,30 +280,30 @@ class AuthenticatedUser implements UserInterface
 
 
     /**
-     * @return Collection|Figures[]
+     * @return Collection|Tricks[]
      */
-    public function getFigures(): Collection
+    public function getTrickks(): Collection
     {
-        return $this->figures;
+        return $this->tricks;
     }
 
-    public function addFigure(Figures $figure): self
+    public function addTask(Tricks $trick): self
     {
-        if (!$this->figures->contains($figure)) {
-            $this->figures[] = $figure;
-            $figure->setAuthenticateduser($this);
+        if (!$this->tricks->contains($trick)) {
+            $this->tricks[] = $trick;
+            $trick->setAuthenticateduser($this);
         }
 
         return $this;
     }
 
-    public function removeFigure(Figures $figure): self
+    public function removeTask(Tricks $trick): self
     {
-        if ($this->figures->contains($figure)) {
-            $this->figures->removeElement($figure);
+        if ($this->tricks->contains($trick)) {
+            $this->tricks->removeElement($trick);
             // set the owning side to null (unless already changed)
-            if ($figure->getAuthenticateduser() === $this) {
-                $figure->setAuthenticateduser(null);
+            if ($trick->getAuthenticateduser() === $this) {
+                $trick->setAuthenticateduser(null);
             }
         }
 

@@ -2,12 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\GroupFigures;
+use App\Entity\TricksGroup;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class GroupFiguresType extends AbstractType
+class TricksGroupType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -19,7 +19,7 @@ class GroupFiguresType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => GroupFigures::class,
+            'data_class' => TricksGroup::class,
         ]);
     }
 }

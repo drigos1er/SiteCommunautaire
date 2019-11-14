@@ -5,11 +5,11 @@ namespace App\Entity;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MediaImageRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
  */
-class MediaImage
+class Image
 {
     /**
      * @ORM\Id()
@@ -19,25 +19,28 @@ class MediaImage
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Figures", inversedBy="mediaimage")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tricks", inversedBy="image")
      */
-    private $figures;
+    private $tricks;
+
 
 
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @Assert\Url()
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Assert\Length( max=25, maxMessage="La description de l'image ne doit pas depasser 25 caractères")
      * @ORM\Column(type="string", length=100)
      */
     private $alt;
 
     public function __construct()
     {
-        $this->figures = new ArrayCollection();
+        $this->tricks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -70,44 +73,42 @@ class MediaImage
     }
 
     /**
-     * @return Collection|Figures[]
+     * @return Collection|Tricks[]
      */
-    public function getFigures(): Collection
+    public function getTricks(): Collection
     {
-        return $this->figures;
+        return $this->tricks;
     }
 
-    public function addFigure(Figures $figure): self
+    public function addTask(Tricks $trick): self
     {
-        if (!$this->figures->contains($figure)) {
-            $this->figures[] = $figure;
-            $figure->setMediaimage($this);
+        if (!$this->tricks->contains($trick)) {
+            $this->tricks[] = $trick;
+            $trick->setImage($this);
         }
 
         return $this;
     }
 
-    public function removeFigure(Figures $figure): self
+    public function removeTask(Tricks $trick): self
     {
-        if ($this->figures->contains($figure)) {
-            $this->figures->removeElement($figure);
+        if ($this->tricks->contains($trick)) {
+            $this->tricks->removeElement($trick);
             // set the owning side to null (unless already changed)
-            if ($figure->getMediaimage() === $this) {
-                $figure->setMediaimage(null);
+            if ($trick->getImage() === $this) {
+                $trick->setImage(null);
             }
         }
 
         return $this;
     }
 
-    public function setFigures(?Figures $figures): self
+    public function setTricks(?Tricks $tricks): self
     {
-        $this->figures = $figures;
+        $this->tricks = $tricks;
 
         return $this;
     }
-
-
 
 
 }

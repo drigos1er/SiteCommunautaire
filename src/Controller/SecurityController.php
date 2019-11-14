@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\AuthenticatedUser;
 use App\Form\RegistrationType;
-use App\Repository\FiguresRepository;
+use App\Repository\TasksRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,6 +17,14 @@ class SecurityController extends AbstractController
 {
 
 
+    /**
+     * Page de création d'un utillisateur
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @param UserPasswordEncoderInterface $encoder
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
+     */
     public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
        $useraut= new AuthenticatedUser();
@@ -24,10 +32,9 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $hashpwd=$encoder->encodePassword($useraut, $useraut->getPassword());
-            $datecreate = new \Datetime();
+
             $useraut->setPassword($hashpwd);
-            $useraut->setCreatedate($datecreate);
-            $useraut->setUpdatedate($datecreate);
+
 
             $manager->persist($useraut);
             $manager->flush();
@@ -38,23 +45,26 @@ class SecurityController extends AbstractController
     }
 
 
-
-    public function login( AuthenticationUtils $authenticationUtils)
+    /**
+     * Page de Connexion
+     * @param AuthenticationUtils $authenticationUtils
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function login(AuthenticationUtils $authenticationUtils)
     {
 
         return $this->render('security/login.html.twig', [
             'error' =>$authenticationUtils->getLastAuthenticationError(),
-            'last_username' =>$authenticationUtils->getLastUsername()
+            'last_username' =>$authenticationUtils->getLastUsername(),
+
         ]);
     }
 
 
-
-
-
-
-
-
+    /**
+     * Page de Déconnexion
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function logout()
     {
 

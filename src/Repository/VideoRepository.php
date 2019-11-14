@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\MediaImage;
+use App\Entity\Video;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method MediaImage|null find($id, $lockMode = null, $lockVersion = null)
- * @method MediaImage|null findOneBy(array $criteria, array $orderBy = null)
- * @method MediaImage[]    findAll()
- * @method MediaImage[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Video|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Video|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Video[]    findAll()
+ * @method Video[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MediaImageRepository extends ServiceEntityRepository
+class VideoRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, MediaImage::class);
+        parent::__construct($registry, Video::class);
     }
 
     // /**

@@ -1,0 +1,73 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block title %}SnowTricks|Création de Figure{% endblock %}
+{# Permet d'inclure des blocs de  thème inclus dans la page avec _self#}
+{% form_theme form 'view/_themecollection.html.twig' %}
+        {% block body %}
+
+
+
+            <!-- Section: contact -->
+            <section id="contact" class="home-section text-center">
+                <div class="heading-contact">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="wow bounceInDown" data-wow-delay="0.4s">
+                                    <div class="section-heading">
+                                        <h2>CREATION UNE FIGURE</h2>
+                                        <i class="fa fa-2x fa-angle-down"></i>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-lg-2 col-lg-offset-5">
+                            <hr class="marginbot-50">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="boxed-grey">
+
+                                {{ form_start(form) }}
+
+                                {{ form_widget(form) }}
+                                <br>
+
+                                <button type="submit" class="btn btn-success" >
+                                    Sauvegarder la Figure     </button>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+            <!-- /Section: contact -->
+
+
+        {% endblock %}
+
+
+
+
+
+
+
+{% block js %}
+
+
+    <script src="{{ asset('build/js/trick.js') }}">
+
+    </script>
+
+{% endblock %}

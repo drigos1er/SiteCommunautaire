@@ -1,4 +1,7 @@
 {
+    "aalaap/faker-youtube": {
+        "version": "1.2.1"
+    },
     "behat/transliterator": {
         "version": "v1.2.0"
     },
@@ -116,9 +119,6 @@
     },
     "egulias/email-validator": {
         "version": "2.1.7"
-    },
-    "facebook/webdriver": {
-        "version": "1.6.0"
     },
     "fig/link-util": {
         "version": "1.0.0"
@@ -418,9 +418,6 @@
     },
     "symfony/orm-pack": {
         "version": "v1.0.6"
-    },
-    "symfony/panther": {
-        "version": "v0.3.0"
     },
     "symfony/phpunit-bridge": {
         "version": "4.1",

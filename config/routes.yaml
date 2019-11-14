@@ -20,12 +20,26 @@ security_logout:
 
 
 
-sitecom_createfigure:
-  path:     /createfigure
-  defaults: { _controller: App\Controller\HomeController::createfigure }
+sitecom_createtrick:
+  path:     /addtrick
+  defaults: { _controller: App\Controller\TrickController::addtrick }
+
+
+sitecom_showtrick:
+  path:     /showtrick/{id}
+  defaults: { _controller: App\Controller\TrickController::showtrick }
 
 
 
-sitecom_listfigures:
-  path:     /listfigures
-  defaults: { _controller: App\Controller\HomeController::listfigures }
+sitecom_edittrick:
+  path:     /edittrick/{id}
+  defaults: { _controller: App\Controller\TrickController::edittrick }
+
+
+
+sitecom_listtrick:
+  path:     /listtrick
+  defaults: { _controller: App\Controller\TrickController::listtrick}
+
+
+
