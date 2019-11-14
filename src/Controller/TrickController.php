@@ -142,12 +142,12 @@ class TrickController extends AbstractController
 
 
 
-    public function listtrcic(TricksRepository $repository,PaginatorInterface $paginator, Request $request)
+    public function listtrick(TricksRepository $repo,PaginatorInterface $paginator, Request $request)
     {
 
 
-        $listtricks = $paginator->paginate($repository->findAlltASKSQuery(), $request->query->getInt('page', 1),
-        15);
+        $listtricks = $paginator->paginate($repo->findAllTricksQuery(), $request->query->getInt('page', 1),
+        10);
         return  $this->render('view/listtrick.html.twig', array('listtricks'=>$listtricks));
     }
 }
