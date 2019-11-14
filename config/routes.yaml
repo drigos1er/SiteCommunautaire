@@ -51,5 +51,11 @@ sitecom_editcomment:
   defaults: { _controller: App\Controller\TrickController::editcomment }
 
 
+sitecom_deletecomment:
+  path:     /deletecomment/{id}
+  defaults: { _controller: App\Controller\TrickController::deletecomment }
+
+
+
 
 

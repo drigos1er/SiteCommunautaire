@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TrickController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TrickController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CommentsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CommentsType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/view/listtrick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/view/listtrick.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/view/showtrick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/view/showtrick.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -382,12 +382,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/view/showtrick.html.twig</url>
-          <line>17</line>
+          <line>19</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/view/showtrick.html.twig</url>
-          <line>100</line>
+          <line>102</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

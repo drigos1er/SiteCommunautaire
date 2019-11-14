@@ -198,24 +198,22 @@ class TrickController extends AbstractController
     }
 
 
+    /**
+     * Modification de commentaires
+     * @param Comments $comments
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editcomment(Comments $comments, Request $request, ObjectManager $manager)
     {
 
-
-
-
-
-        $form= $this->createForm(CommentsType::class, $comments);
-
-
+       $form= $this->createForm(CommentsType::class, $comments);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-
             $manager->persist($comments);
-
-
 
             $manager->flush();
             $this->addFlash('success','Commentaire Modifiée avec succès');
@@ -224,14 +222,20 @@ class TrickController extends AbstractController
 
         }
 
-
-
-
         return $this->render('view/editcomment.html.twig', array('form'=>$form->createView()));
     }
 
 
+    public function deletecomment(Comments $comments, ObjectManager $manager, Request $request)
+    {
+        $manager->remove($comments);
 
+
+        $manager->flush();
+        $this->addFlash('success',"le commentaire a été  supprimé avec succès");
+        return $this->redirectToRoute('sitecom_showtrick', array('id'=>$comments->getTricks()->getId()));
+
+    }
 
 
 }

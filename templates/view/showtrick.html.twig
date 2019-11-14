@@ -4,8 +4,6 @@
 
         {% block body %}
 
-
-
             <!-- Section: contact -->
             <section id="contact" class="home-section text-center">
                 <div class="heading-contact">
@@ -48,7 +46,7 @@
                                             <h2 style="color: white" class="bg-dark">{{ shtrick.name }}&nbsp;&nbsp;
                                                 {% if app.user and app.user==shtrick.authenticateduser %}
                                                     <a href="{{ path('sitecom_edittrick',{id:shtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
-                                                    <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
+                                                    <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }}" class="btn btn-danger btn-xsm" onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ shtrick.name }} ?')">  <i class="fa fa-trash-o"></i></a>
                                                 {% endif %} </h2>
                                             <i class="fa fa-2x fa-angle-down"></i>
 
@@ -160,16 +158,19 @@
 
                                <div class="bg-light rounded mb-3 px-3 py-3">
                                    <strong>Crée le {{ comment.createdate|date("d/m/Y") }}  par  {{ comment.authenticateduser.lastname }}{{ comment.authenticateduser.firstname }}</strong> <i class="fa fa-comments-o" style="color:darkblue"></i>:
+                                   <img src="/public/images/users/{{comment.authenticateduser.picture}}" alt="" class="img-responsive img-circle"  style="height: 40px; width: 40px;"/>
+
+
                                    <blockquote>
 
-                                       <img src=".../public/images/users/{{comment.authenticateduser.picture}}" alt="" class="img-responsive img-circle"  style="height: 40px; width: 40px;"/>
+
                                        {{ comment.content }}
 
 <br>
                                        <span style="color: #2a6496; font-size: 11px; font-style: italic">Dernière mise à jour: {{ comment.updatedate|date("d/m/Y  H:m:s") }}</span>
                                        {% if app.user and app.user==comment.authenticateduser %}
                                            <a href="{{ path('sitecom_editcomment',{id:comment.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
-                                           <a href="{{ path('sitecom_deletetrick',{id:comment.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
+                                           <a href="{{ path('sitecom_deletecomment',{id:comment.id }) }}" class="btn btn-danger btn-xsm" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce commentaire ?')">  <i class="fa fa-trash-o"></i></a>
                                        {% endif %}
                                    </blockquote>
 

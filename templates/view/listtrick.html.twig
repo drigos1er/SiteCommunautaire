@@ -65,7 +65,7 @@
 
                                             {% if app.user %}
                                                 <a href="{{ path('sitecom_edittrick',{id:listtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
-                                                <a href="{{ path('sitecom_deletetrick',{id:listtrick.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
+                                                <a href="{{ path('sitecom_deletetrick',{id:listtrick.id }) }}" class="btn btn-danger btn-xsm" onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ listtrick.name }} ?')">  <i class="fa fa-trash-o"></i></a>
                                             {% endif %}
 
                                             {% endif %} {% endfor %}
