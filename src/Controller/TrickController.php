@@ -197,4 +197,41 @@ class TrickController extends AbstractController
 
     }
 
+
+    public function editcomment(Comments $comments, Request $request, ObjectManager $manager)
+    {
+
+
+
+
+
+        $form= $this->createForm(CommentsType::class, $comments);
+
+
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $manager->persist($comments);
+
+
+
+            $manager->flush();
+            $this->addFlash('success','Commentaire Modifiée avec succès');
+
+            return $this->redirectToRoute('sitecom_showtrick', array('id'=>$comments->getTricks()->getId()));
+
+        }
+
+
+
+
+        return $this->render('view/editcomment.html.twig', array('form'=>$form->createView()));
+    }
+
+
+
+
+
 }

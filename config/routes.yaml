@@ -46,5 +46,10 @@ sitecom_listtrick:
   path:     /listtrick
   defaults: { _controller: App\Controller\TrickController::listtrick}
 
+sitecom_editcomment:
+  path:     /editcomment/{id}
+  defaults: { _controller: App\Controller\TrickController::editcomment }
+
+
 
 

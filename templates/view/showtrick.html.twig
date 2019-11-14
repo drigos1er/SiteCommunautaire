@@ -168,7 +168,7 @@
 <br>
                                        <span style="color: #2a6496; font-size: 11px; font-style: italic">Dernière mise à jour: {{ comment.updatedate|date("d/m/Y  H:m:s") }}</span>
                                        {% if app.user and app.user==comment.authenticateduser %}
-                                           <a href="{{ path('sitecom_edittrick',{id:comment.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
+                                           <a href="{{ path('sitecom_editcomment',{id:comment.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
                                            <a href="{{ path('sitecom_deletetrick',{id:comment.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
                                        {% endif %}
                                    </blockquote>
