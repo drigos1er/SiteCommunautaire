@@ -22,11 +22,11 @@
                                     {% for img in shtrick.image %}
                                     {% if loop.first %}
 
-                                        <div class="section-heading"  style="background-image: url({{ img.name }} ); height: 300px; width: 1200px;  background-repeat: no-repeat; background-size: 100%">
+                                        <div class="section-heading"  style="background-image: url({{ img.name }} ); height: 300px; width: 1200px;  background-repeat: no-repeat; background-size: 100%" >
                                             <h2 style="color: white" class="bg-dark">{{ shtrick.name }}&nbsp;&nbsp;
-                                                {% if app.user %}
+                                                {% if app.user and app.user==shtrick.authenticateduser %}
                                                     <a href="{{ path('sitecom_edittrick',{id:shtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
-                                                    <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
+                                                    <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }}" class="btn btn-danger btn-xsm" onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ shtrick.name }} ?')">  <i class="fa fa-trash-o"></i></a>
                                                 {% endif %} </h2>
                                             <i class="fa fa-2x fa-angle-down"></i>
 
@@ -42,9 +42,9 @@
                                     {% else %}
 
 
-                                        <div class="section-heading"  style="background-image: url({{ asset('build/img/team/1.jpg') }} ); height: 300px; width: 1200px;  background-repeat: no-repeat; background-size: 100%">
+                                        <div class="section-heading"  style="background-image: url({{ asset('build/img/team/1.jpg') }} ); height: 300px; width: 1200px;  background-repeat: no-repeat; background-size: 100%" >
                                             <h2 style="color: white" class="bg-dark">{{ shtrick.name }}&nbsp;&nbsp;
-                                                {% if app.user %}
+                                                {% if app.user and app.user==shtrick.authenticateduser %}
                                                     <a href="{{ path('sitecom_edittrick',{id:shtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
                                                     <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
                                                 {% endif %} </h2>
@@ -81,7 +81,7 @@
 
                   <br>  <div class="container">
                         <div class="row">
-                            {% for img in shtrick.image %}   <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="{{ img.name}}" width=""/></div>
+                            {% for img in shtrick.image %}   <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="{{ img.name}}"  alt="{{ img.alt }}"/></div>
                             {% endfor %}
 
 <br>
@@ -163,6 +163,10 @@
 
 <br>
                                        <span style="color: #2a6496; font-size: 11px; font-style: italic">Dernière mise à jour: {{ comment.updatedate|date("m/d/Y  H:m:s") }}</span>
+                                       {% if app.user and app.user==comment.authenticateduser %}
+                                           <a href="{{ path('sitecom_edittrick',{id:comment.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
+                                           <a href="{{ path('sitecom_deletetrick',{id:comment.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
+                                       {% endif %}
                                    </blockquote>
 
                                </div>

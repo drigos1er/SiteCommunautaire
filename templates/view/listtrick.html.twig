@@ -28,9 +28,18 @@
                 </div>
                 <div class="container">
                      <button class="btn btn-success" ><a href="{{ path('sitecom_addtrick') }}" style="color: white"> <i class="fa fa-chevron-circle-right"></i> Cliquez ici pour ajouter une nouvelle figure </a></button>
+
+
+
+
+
                     <div class="row">
                         <div class="col-lg-2 col-lg-offset-5">
                             <hr class="marginbot-50">
+                            {% for message in app.flashes('success')  %}
+                                <div class="alert alert-success"> {{ message }}</div>
+
+                            {% endfor  %}
                         </div>
                     </div>
                     <div class="row">
