@@ -4,8 +4,7 @@
     <list default="true" id="68556432-ab3e-40bc-bd0f-cb7572343c8d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TrickController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TrickController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Tricks.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tricks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/view/listtrick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/view/listtrick.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comments.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/view/showtrick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/view/showtrick.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -382,12 +381,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/view/showtrick.html.twig</url>
-          <line>15</line>
+          <line>17</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/view/showtrick.html.twig</url>
-          <line>98</line>
+          <line>100</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

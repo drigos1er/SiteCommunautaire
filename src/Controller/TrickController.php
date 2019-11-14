@@ -127,7 +127,7 @@ class TrickController extends AbstractController
      * @param TricksRepository $trick
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showtrick($id, TricksRepository $trick)
+    public function showtrick($id, TricksRepository $trick, Request $request, ObjectManager $manager)
     {
 
         $comments= new Comments();
@@ -136,7 +136,28 @@ class TrickController extends AbstractController
 
         //recupération de la figure en fonction de l'id
         $shtrick= $trick->findOneById($id);
-        return $this->render('view/showtrick.html.twig', array('shtrick'=>$shtrick,'form'=>$form->createView()));
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+         $comments->setTricks($shtrick);
+         $comments->setAuthenticateduser($this->getUser());
+
+
+         $manager->persist($comments);
+
+
+
+            $manager->flush();
+            $this->addFlash('success','Commentaire ajoutée avec succès');
+
+        }
+
+
+
+
+            return $this->render('view/showtrick.html.twig', array('shtrick'=>$shtrick,'form'=>$form->createView()));
     }
 
 
