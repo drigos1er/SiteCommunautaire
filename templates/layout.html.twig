@@ -9,17 +9,16 @@
 
     <title>{% block title %}{% endblock %}</title>
     {% block stylesheets %}
+
     <!-- Bootstrap Core CSS -->
+    <link href="../build/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-    <link href="{{ asset('build/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-   <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
     <!-- Fonts -->
-    <link href="{{ asset('build/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('build/css/animate.css') }}" rel="stylesheet" />
+    <link href=../build/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../build/css/animate.css" rel="stylesheet" />
     <!-- Squad theme CSS -->
-    <link href="{{ asset('build/css/style.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('build/color/default.css') }}" rel="stylesheet">
+    <link href="../build/css/style.css" rel="stylesheet">
+    <link href="../build/color/default.css" rel="stylesheet">
         <style>
             .carousel-page
             {
@@ -28,8 +27,40 @@
                 background-color:#5f666d;
                 color:white;
             }
+
+
+            .flex{
+                display: flex;
+                flex-wrap: wrap;
+
+
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            .flex img {
+                background-repeat: no-repeat; background-size: 100%;
+            }
+
+
+            .flex div
+            {
+                width:300px;
+
+                border: solid 1px black;
+                height: 200px;
+                overflow: hidden;
+                position: relative;
+                /*
+
+ padding-bottom: 56.25%;
+                box-shadow: 0 10px 60px 0 rgba(0,0,0,0.2);*/
+
+            }
         </style>
     {% endblock %}
+
 
 </head>
 
@@ -38,7 +69,6 @@
 <div id="preloader">
     <div id="load"></div>
 </div>
-
 
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
@@ -54,15 +84,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ path('sitecom_homepage') }}">Accueil</a></li>
+                <li class="{%if current_menu==''  %}active{% endif %}"><a href="{{ path('sitecom_homepage') }}">Accueil</a></li>
 
-                <li><a href="{{ path('sitecom_listtrick') }}">Figures</a></li>
+                <li class="{%if current_menu=='showtrick'  %}active{% endif %}"><a href="{{ path('sitecom_listtrick',{'page':1}) }}">Figures</a></li>
 
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="">Contact</a></li>
                 {%if not app.user  %}
 
 
-                    <li><a href="{{ path('security_login') }}">Se Connecter</a></li>
+                    <li class="{%if current_menu=='login'  %}active{% endif %}"><a href="{{ path('security_login') }}">Se Connecter</a></li>
 
                 {% else %}
 
@@ -87,11 +117,6 @@
     <!-- /.container -->
 </nav>
 
-
-
-
-
-
 {% block body %}
 {% endblock %}
 
@@ -108,27 +133,18 @@
     </div>
 </footer>
 
-    <!-- Core JavaScript Files -->
-    <script src="{{ asset('build/js/jquery.min.js') }}"></script>
-    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
-    <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
-
-    <!-- Core JavaScript Files -->
-    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>-->
-    <script src="{{ asset('build/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('build/js/jquery.easing.min.js') }}"></script>
-    <script src="{{ asset('build/js/jquery.scrollTo.js') }}"></script>
-    <script src="{{ asset('build/js/wow.min.js') }}"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('build/js/custom.js') }}"></script>
-    <script src="{{ asset('build/contactform/contactform.js') }}"></script>
-
-
+<!-- Core JavaScript Files -->
+<script src="../build/js/jquery.min.js"></script>
+<script src="../build/js/bootstrap.min.js"></script>
+<script src="../build/js/jquery.easing.min.js"></script>
+<script src="../build/js/jquery.scrollTo.js"></script>
+<script src="../build/js/wow.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="../build/js/custom.js"></script>
+<script src="../build/contactform/contactform.js"></script>
 
 {% endblock %}
 {% block js %}{% endblock %}
-
 </body>
 
 </html>

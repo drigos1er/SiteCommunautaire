@@ -43,7 +43,7 @@ sitecom_deletetrick:
 
 
 sitecom_listtrick:
-  path:     /listtrick
+  path:     /listtrick/{page}
   defaults: { _controller: App\Controller\TrickController::listtrick}
 
 sitecom_editcomment:

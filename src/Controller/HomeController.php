@@ -22,7 +22,7 @@ class HomeController extends AbstractController
     public function index(TricksRepository $repository)
     {
         $tricks = $repository->findLastTricks();
-        return  $this->render('view/home.html.twig', array('tricks'=>$tricks));
+        return  $this->render('view/home.html.twig', array('tricks'=>$tricks,'current_menu'=>''));
     }
 
 }

@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
 
 
         // on créé 10 Figures
-        for ($i = 0; $i < 11; $i++) {
+        for ($i = 0; $i < 18; $i++) {
             // création de groupes de figures
             $group = new TricksGroup();
             $group->setName($faker->text(50));

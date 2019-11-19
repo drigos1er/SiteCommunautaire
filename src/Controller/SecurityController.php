@@ -41,7 +41,7 @@ class SecurityController extends AbstractController
      $this->addFlash('success','Compte crée avec succès');
             return $this->redirectToRoute('security_login');
         }
-       return $this->render('security/registration.html.twig', array('form'=>$form->createView()));
+       return $this->render('security/registration.html.twig', array('form'=>$form->createView(), 'current_menu'=>'register'));
     }
 
 
@@ -56,6 +56,7 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', [
             'error' =>$authenticationUtils->getLastAuthenticationError(),
             'last_username' =>$authenticationUtils->getLastUsername(),
+            'current_menu'=>'login'
 
         ]);
     }
