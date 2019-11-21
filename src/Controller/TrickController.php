@@ -69,7 +69,7 @@ class TrickController extends AbstractController
             $this->addFlash('success',' la figure crée avec succès');
             return $this->redirectToRoute('sitecom_listtrick', array('id'=>$trick->getId()));
         }
-        return $this->render('view/addtrick.html.twig', array('form'=>$form->createView()));
+        return $this->render('view/addtrick.html.twig', array('form'=>$form->createView(),'current_menu'=>'addtrick'));
     }
 
     /**
@@ -86,7 +86,7 @@ class TrickController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
 
-            // Vérifier l'existence des anciennes images sinon supprimer
+            /*Vérifier l'existence des anciennes images sinon supprimer
             foreach ($trick->getImage() as $image){
 
                 $image->setTricks($trick);
@@ -105,7 +105,7 @@ class TrickController extends AbstractController
 
             $trick->setUpdatedate($datecreate);
 
-            $trick->setAuthenticateduser($this->getUser());
+            $trick->setAuthenticateduser($this->getUser());*/
 
 
             $manager->persist($trick);
@@ -114,14 +114,14 @@ class TrickController extends AbstractController
 
             $manager->flush();
             $this->addFlash('success','figure Modifiée avec succès');
-            return $this->redirectToRoute('sitecom_listtrick', array('id'=>$trick->getId()));
+           // return $this->redirectToRoute('sitecom_listtrick', array('id'=>$trick->getId()));
         }
 
 
 
 
 
-        return $this->render('view/edittrick.html.twig', array('form'=>$form->createView()));
+        return $this->render('view/edittrick.html.twig', array('form'=>$form->createView(), 'current_menu'=>'edittrick', 'trick'=>$trick));
     }
 
 

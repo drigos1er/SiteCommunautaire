@@ -64,8 +64,8 @@
                                                 <div class="avatar"><img src="{{ img.name}}" alt="" class="img-responsive" /></div>
 
                                             {% if app.user and app.user==listtrick.authenticateduser %}
-                                                <a href="{{ path('sitecom_edittrick',{id:listtrick.id }) }}">  <i class="fa  fa-pencil"></i></a>
-                                                <a href="{{ path('sitecom_deletetrick',{id:listtrick.id }) }}"  onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ listtrick.name }} ?')">  <i class="fa fa-trash-o"></i></a>
+                                                <a href="{{ path('sitecom_edittrick',{id:listtrick.id }) }}" style="color: orange" title="Modifier" >  <i class="fa  fa-pencil"></i></a>&nbsp;&nbsp;
+                                                <a href="{{ path('sitecom_deletetrick',{id:listtrick.id }) }}"  onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ listtrick.name }} ?')" style="color: red" title="Supprimer">  <i class="fa fa-trash-o"></i></a>
                                             {% endif %}
 
                                             {% endif %} {% endfor %}

@@ -25,8 +25,8 @@
                                         <div class="section-heading"  style="background-image: url({{ img.name }} ); height: 300px; width: 1200px;  background-repeat: no-repeat; background-size: 100%" >
                                             <h2 style="color: white" class="bg-dark">{{ shtrick.name }}&nbsp;&nbsp;
                                                 {% if app.user and app.user==shtrick.authenticateduser %}
-                                                    <a href="{{ path('sitecom_edittrick',{id:shtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
-                                                    <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }}" class="btn btn-danger btn-xsm" onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ shtrick.name }} ?')">  <i class="fa fa-trash-o"></i></a>
+                                                    <a href="{{ path('sitecom_edittrick',{id:shtrick.id }) }}"  style="color: orange" title="Modifier">  <i class="fa  fa-edit"></i></a>&nbsp;&nbsp;
+                                                    <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }} " style="color: red" title="Supprimer" onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ shtrick.name }} ?')">  <i class="fa fa-trash-o"></i></a>
                                                 {% endif %} </h2>
                                             <i class="fa fa-2x fa-angle-down"></i>
 
@@ -45,8 +45,8 @@
                                         <div class="section-heading"  style="background-image: url({{ asset('build/img/team/1.jpg') }} ); height: 300px; width: 1200px;  background-repeat: no-repeat; background-size: 100%" >
                                             <h2 style="color: white" class="bg-dark">{{ shtrick.name }}&nbsp;&nbsp;
                                                 {% if app.user and app.user==shtrick.authenticateduser %}
-                                                    <a href="{{ path('sitecom_edittrick',{id:shtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
-                                                    <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }}" class="btn btn-danger btn-xsm" onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ shtrick.name }} ?')">  <i class="fa fa-trash-o"></i></a>
+                                                    <a href="{{ path('sitecom_edittrick',{id:shtrick.id }) }}" style="color: orange" title="Modifier">  <i class="fa  fa-edit"></i></a>&nbsp;&nbsp;
+                                                    <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }} " style="color: red" title="Supprimer" onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ shtrick.name }} ?')">  <i class="fa fa-trash-o"></i></a>
                                                 {% endif %} </h2>
                                             <i class="fa fa-2x fa-angle-down"></i>
 
@@ -175,15 +175,15 @@
                         <div class="col-md-6 col-md-offset-3">
                            {% if shtrick.comments|length >0 %}
                                <h2 class="mb-3">Les Commentaires</h2>
-
+                               {% set i = 0 %}
                                {% for comment in shtrick.comments %}
+                                   {% set i= i + 1 %}
+
+                                   {% if i <= 10 %}
 
 
 
-
-
-
-                               <div class="bg-light rounded mb-3 px-3 py-3">
+                               <div class="bg-light rounded mb-3 px-3 py-3" id="tencomment" style="display:block;">
                                    <strong>Crée le {{ comment.createdate|date("d/m/Y") }}  par  {{ comment.authenticateduser.lastname }}{{ comment.authenticateduser.firstname }}</strong> <i class="fa fa-comments-o" style="color:darkblue"></i>:
                                    <img src="../images/users/{{comment.authenticateduser.picture}}" alt="" class="img-responsive img-circle"  style="height: 40px; width: 40px;"/>
 
@@ -196,8 +196,8 @@
 <br>
                                        <span style="color: #2a6496; font-size: 11px; font-style: italic">Dernière mise à jour: {{ comment.updatedate|date("d/m/Y  H:m:s") }}</span>
                                        {% if app.user and app.user==comment.authenticateduser %}
-                                           <a href="{{ path('sitecom_editcomment',{id:comment.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
-                                           <a href="{{ path('sitecom_deletecomment',{id:comment.id }) }}" class="btn btn-danger btn-xsm" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce commentaire ?')">  <i class="fa fa-trash-o"></i></a>
+                                           <a href="{{ path('sitecom_editcomment',{id:comment.id }) }}" style="color: orange" title="Modifier" >  <i class="fa  fa-edit"></i></a>&nbsp;&nbsp;
+                                           <a href="{{ path('sitecom_deletecomment',{id:comment.id }) }}"  style="color: red" title="Supprimer" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce commentaire ?')">  <i class="fa fa-trash-o"></i></a>
                                        {% endif %}
                                    </blockquote>
 
@@ -206,7 +206,60 @@
 
 
 
+                                   {% endif %}
+
+
+                               <div class="bg-light rounded mb-3 px-3 py-3" id="allcomment" style="display:none;">
+                                   <strong>Crée le {{ comment.createdate|date("d/m/Y") }}  par  {{ comment.authenticateduser.lastname }}{{ comment.authenticateduser.firstname }}</strong> <i class="fa fa-comments-o" style="color:darkblue"></i>:
+                                   <img src="../images/users/{{comment.authenticateduser.picture}}" alt="" class="img-responsive img-circle"  style="height: 40px; width: 40px;"/>
+
+
+                                   <blockquote>
+
+
+                                       {{ comment.content }}
+
+                                       <br>
+                                       <span style="color: #2a6496; font-size: 11px; font-style: italic">Dernière mise à jour: {{ comment.updatedate|date("d/m/Y  H:m:s") }}</span>
+                                       {% if app.user and app.user==comment.authenticateduser %}
+                                           <a href="{{ path('sitecom_editcomment',{id:comment.id }) }}" style="color: orange" title="Modifier" >  <i class="fa  fa-edit"></i></a>&nbsp;&nbsp;
+                                           <a href="{{ path('sitecom_deletecomment',{id:comment.id }) }}"  style="color: red" title="Supprimer" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce commentaire ?')">  <i class="fa fa-trash-o"></i></a>
+                                       {% endif %}
+                                   </blockquote>
+
+                               </div>
+
+
+
+
+
+
+
                                {% endfor %}
+
+                               {% if i >= 1 %}
+
+                                   <div class="row">
+                                       <div class="col-lg-12 ">
+                                           <div ><button class="btn btn-info "  onclick="myFunction()">
+                                                   <i class="fa fa-spinner fa-spin"></i> Voir plus</button></div></div></div>
+
+
+
+                               {% endif %}
+
+
+
+
+
+
+
+                               <script>
+                                   function myFunction() {
+                                       document.getElementById("allcomment").style.display = "block";
+
+                                   }
+                               </script>
                             {% else  %}
                                <h5>Aucun commentaire sur cette figure</h5>
                             {% endif %}

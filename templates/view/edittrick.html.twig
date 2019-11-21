@@ -27,7 +27,10 @@
                     </div>
                 </div>
                 <div class="container">
+                    {% for message in app.flashes('success')  %}
+                        <div class="alert alert-success"> {{ message }}</div>
 
+                    {% endfor  %}
                     <div class="row">
                         <div class="col-lg-2 col-lg-offset-5">
                             <hr class="marginbot-50">
@@ -42,9 +45,21 @@
                                 {{ form_widget(form) }}
                                 <br>
 
-                                <button type="submit" class="btn btn-warning" >
-                                    Enregistrer la modification     </button>
+
+                                <a href="{{ path('sitecom_deletetrick',{id:trick.id }) }}" class="btn btn-danger" >
+                                    Supprimer </a>
+
+
+                                <span type="submit" class="btn btn-success" >
+                                    Enregistrer
+                                </span>
+
                                 {{ form_end(form) }}
+
+
+                                {{ form_end(form) }}
+
+
                             </div>
                         </div>
 
@@ -65,8 +80,8 @@
 
 
 {% block js %}
-<script src="{{ asset('build/js/trick.js') }}">
+    <script src="/Sitecommunautaire/public/js/trick.js">
 
-</script>
+    </script>
 
 {% endblock %}
