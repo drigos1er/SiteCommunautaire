@@ -19,8 +19,10 @@ class ProfileType extends AbstractType
 
             ->add('contact')
 
-            ->add('imagefile', FileType::class,[
-                'required'=>false])
+            ->add('picture', FileType::class,[
+                'required'=>false,
+                'label'=>'Image de Profile',
+                'data_class' => null ])
 
 
         ;

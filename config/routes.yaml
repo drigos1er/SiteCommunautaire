@@ -70,3 +70,12 @@ sitecom_updatepwd:
   path:     /updatepwd
   defaults: { _controller: App\Controller\SecurityController::updatepwd}
 
+
+sitecom_resetpwd:
+  path:     /resetpwd
+  defaults: { _controller: App\Controller\SecurityController::resetpwd}
+
+
+sitecom_resetmail:
+  path:     /resetting/{id}/{token}
+  defaults: { _controller: App\Controller\SecurityController::resetting}

@@ -2,7 +2,7 @@
 
 
 
-{% block title %}SnowTricks|Mon Compte{% endblock %}
+{% block title %}SnowTricks|Réinitialisation de Mot de Passe{% endblock %}
 
         {% block body %}
 
@@ -16,7 +16,7 @@
                             <div class="col-lg-8 col-lg-offset-2">
                                 <div class="wow bounceInDown" data-wow-delay="0.4s">
                                     <div class="section-heading">
-                                        <h2>MON COMPTE</h2>
+                                        <h2>Réinitialisation de Mot de Passe</h2>
                                         <i class="fa fa-2x fa-angle-down"></i>
 
                                     </div>
@@ -27,64 +27,41 @@
                 </div>
                 <div class="container">
 
-                    <div class="row">
-                        <div class="col-lg-2 col-lg-offset-5">
-                            <hr class="marginbot-50">
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="col-lg-8 col-lg-offset-2">
                             <div class="boxed-grey">
-
 
 
                                 {{ form_start(form) }}
 
                                     <div class="row">
                                         <div class="col-md-6 col-md-offset-3">
+                                            <div class="form-group">
 
+                                                {{ form_row(form.password.first,{'attr': {'placeholder': 'Votre nouveau mot de passe ','class': 'form-control'}}) }}
+
+
+                                            </div>
                                             <div class="form-group">
 
                                                 <div class="form-group">
-                                                    {{ form_row(form.firstname,{'label': 'Nom ','attr': {'placeholder': 'Nom ','class': 'form-control'}}) }}
+                                                    {{ form_row(form.password.second,{'attr': {'placeholder': 'Confirmer votre nouveau mot de passe ','class': 'form-control'}}) }}
 
-                                                    <div class="validation"> </div>
+
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-
-                                                {{ form_row(form.lastname,{'label': 'Prénoms ','attr': {'placeholder': 'Prénoms ','class': 'form-control'}}) }}
-
-                                                <div class="validation"> </div>
-                                            </div>
-
-                                            <div class="form-group">
 
 
-                                                {{ form_row(form.contact,{'label': 'Téléphone ','attr': {'Placeholder': 'Téléphone','class': 'form-control'}}) }}
-
-                                                <div class="validation"> </div>
-                                            </div>
-
-                                            <div class="form-group">
-
-                                                {{ form_row(form.picture) }}
-
-
-                                            </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
-                                                Mettre à Jour</button>
+                                                Réinitialiser</button>
                                         </div>
                                     </div>
                                 {{ form_end(form) }}
                             </div>
-
-                            <br><br>
-                            <div style="font-size: 16px">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ path('sitecom_updatepwd') }}" class="btn btn-success " >
-                                    Modifier mon mot de passe  ICI</a></div>
                         </div>
 
                     </div>

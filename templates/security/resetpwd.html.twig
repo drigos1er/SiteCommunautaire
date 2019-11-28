@@ -2,7 +2,7 @@
 
 
 
-{% block title %}SnowTricks|Modification de mot de passe{% endblock %}
+{% block title %}SnowTricks|Réinitialisation de mot de passe{% endblock %}
 
         {% block body %}
 
@@ -16,7 +16,7 @@
                             <div class="col-lg-8 col-lg-offset-2">
                                 <div class="wow bounceInDown" data-wow-delay="0.4s">
                                     <div class="section-heading">
-                                        <h2>Modifier mon Mot de Passe</h2>
+                                        <h2>Réinitialisation mon Mot de Passe</h2>
                                         <i class="fa fa-2x fa-angle-down"></i>
 
                                     </div>
@@ -28,15 +28,13 @@
                 <div class="container">
 
                     <div class="row">
-                        <div class="col-lg-2 col-lg-offset-5">
-                            <hr class="marginbot-50">
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-8 col-lg-offset-2">
                             <div class="boxed-grey">
 
+                                {% for message in app.flashes('success')  %}
+                                    <div class="alert alert-success"> {{ message }}</div>
 
+                                {% endfor  %}
 
                                 {{ form_start(form) }}
 
@@ -46,26 +44,18 @@
                                             <div class="form-group">
 
                                                 <div class="form-group">
-                                                    {{ form_row(form.oldpwd) }}
+                                                    {{ form_row(form.username) }}
 
                                                 </div>
 
-                                                <div class="form-group">
-                                                    {{ form_row(form.newpwd) }}
 
-                                                </div>
-
-                                                <div class="form-group">
-                                                    {{ form_row(form.confirmpwd) }}
-
-                                                </div>
                                             </div>
 
                                         </div>
 
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
-                                                Modifier</button>
+                                            <button type="submit" class="btn btn-skin pull-center" id="btnContactUs">
+                                                Envoyer pour réinitialiser votre mot de passe</button>
                                         </div>
                                     </div>
                                 {{ form_end(form) }}
