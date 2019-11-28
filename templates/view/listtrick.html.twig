@@ -63,9 +63,9 @@
                                                 <h5 class="card-title"><a href="{{ path('sitecom_showtrick',{id:listtrick.id }) }}"> {{ listtrick.name }}</a></h5>
                                                 <div class="avatar"><img src="{{ img.name}}" alt="" class="img-responsive" /></div>
 
-                                            {% if app.user %}
-                                                <a href="{{ path('sitecom_edittrick',{id:listtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
-                                                <a href="{{ path('sitecom_deletetrick',{id:listtrick.id }) }}" class="btn btn-danger btn-xsm" onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ listtrick.name }} ?')">  <i class="fa fa-trash-o"></i></a>
+                                            {% if app.user and app.user==listtrick.authenticateduser %}
+                                                <a href="{{ path('sitecom_edittrick',{id:listtrick.id }) }}" style="color: orange" title="Modifier" >  <i class="fa  fa-pencil"></i></a>&nbsp;&nbsp;
+                                                <a href="{{ path('sitecom_deletetrick',{id:listtrick.id }) }}"  onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ listtrick.name }} ?')" style="color: red" title="Supprimer">  <i class="fa fa-trash-o"></i></a>
                                             {% endif %}
 
                                             {% endif %} {% endfor %}
@@ -92,9 +92,13 @@
 
                     </div>
 
-                    <div class="navigation">
+
+   {% include'view/pagination.html.twig' with {'route': 'sitecom_listtrick'} %}
+
+
+                   {# <div class="navigation">
                         {{ knp_pagination_render(listtricks) }}
-                    </div>
+                    </div>#}
 
 
 

@@ -12,6 +12,7 @@ use App\Form\ImageType;
 use App\Form\RegistrationType;
 use App\Repository\AuthenticatedUserRepository;
 use App\Repository\TricksRepository;
+use App\Service\Paginator;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -68,7 +69,7 @@ class TrickController extends AbstractController
             $this->addFlash('success',' la figure crée avec succès');
             return $this->redirectToRoute('sitecom_listtrick', array('id'=>$trick->getId()));
         }
-        return $this->render('view/addtrick.html.twig', array('form'=>$form->createView()));
+        return $this->render('view/addtrick.html.twig', array('form'=>$form->createView(),'current_menu'=>'addtrick'));
     }
 
     /**
@@ -84,6 +85,8 @@ class TrickController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
+
+            /*Vérifier l'existence des anciennes images sinon supprimer
             foreach ($trick->getImage() as $image){
 
                 $image->setTricks($trick);
@@ -95,13 +98,14 @@ class TrickController extends AbstractController
                 $manager->persist($video);
             }
 
+
             $datecreate = new \Datetime();
 
 
 
             $trick->setUpdatedate($datecreate);
 
-            $trick->setAuthenticateduser($this->getUser());
+            $trick->setAuthenticateduser($this->getUser());*/
 
 
             $manager->persist($trick);
@@ -110,14 +114,14 @@ class TrickController extends AbstractController
 
             $manager->flush();
             $this->addFlash('success','figure Modifiée avec succès');
-            return $this->redirectToRoute('sitecom_listtrick', array('id'=>$trick->getId()));
+           // return $this->redirectToRoute('sitecom_listtrick', array('id'=>$trick->getId()));
         }
 
 
 
 
 
-        return $this->render('view/edittrick.html.twig', array('form'=>$form->createView()));
+        return $this->render('view/edittrick.html.twig', array('form'=>$form->createView(), 'current_menu'=>'edittrick', 'trick'=>$trick));
     }
 
 
@@ -157,24 +161,22 @@ class TrickController extends AbstractController
 
 
 
-            return $this->render('view/showtrick.html.twig', array('shtrick'=>$shtrick,'form'=>$form->createView()));
+            return $this->render('view/showtrick.html.twig', array('shtrick'=>$shtrick,'form'=>$form->createView(),'current_menu'=>'showtrick'));
     }
 
 
     /**
      * Affichage de la liste de figures
      * @param TricksRepository $repo
-     * @param PaginatorInterface $paginator
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listtrick(TricksRepository $repo, PaginatorInterface $paginator, Request $request)
+    public function listtrick(TricksRepository $repo,$page, Paginator $paginator)
     {
 
-
-        $listtricks = $paginator->paginate($repo->findAllTricksQuery(), $request->query->getInt('page', 1),
-        10);
-        return  $this->render('view/listtrick.html.twig', array('listtricks'=>$listtricks));
+        $paginator->setEntityClass(Tricks::class);
+        $paginator->setCurrentPage($page);
+        return  $this->render('view/listtrick.html.twig', array('listtricks'=>$paginator->getDataPagination(),'current_menu'=>'listtrick', 'pages'=>$paginator->getPages(),'page'=>$page));
     }
 
 

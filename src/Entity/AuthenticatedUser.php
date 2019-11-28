@@ -82,7 +82,7 @@ class AuthenticatedUser implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=25)
      * @Assert\NotNull
      */
     private $contact;

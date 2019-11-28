@@ -22,7 +22,7 @@ class TricksType extends AbstractType
      * @param String $placeholder
      * @return array
      */
-    private function getConfiguration($label, $placeholder,$class){
+    public function getConfiguration($label, $placeholder,$class){
         return [
             'label'=>$label,
             'attr'=> [
