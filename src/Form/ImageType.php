@@ -11,17 +11,20 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
+/**
+ * Formulaire des images de Figures
+ * Class ImageType
+ * @package App\Form
+ */
 class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-       $builder
+        $builder
             ->add('name', UrlType::class)
-           ->add('alt', TextType::class)
+            ->add('alt', TextType::class)
 
         ;
-
-
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -30,7 +33,4 @@ class ImageType extends AbstractType
             'data_class' => Image::class,
         ]);
     }
-
-
-
 }

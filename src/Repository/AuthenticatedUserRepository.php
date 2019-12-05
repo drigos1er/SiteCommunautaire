@@ -14,42 +14,12 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class AuthenticatedUserRepository extends ServiceEntityRepository
 {
+    /**
+     * AuthenticatedUserRepository constructor.
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, AuthenticatedUser::class);
     }
-
-
-
-
-
-
-    // /**
-    //  * @return AuthenticatedUser[] Returns an array of AuthenticatedUser objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?AuthenticatedUser
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -12,6 +12,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Formulaire de réinitialisation de mot de passe
+ * Class ResettingType
+ * @package App\Form
+ */
 class ResettingType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)

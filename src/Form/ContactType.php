@@ -12,6 +12,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ *Formulaire de Contact
+ * Class ContactType
+ * @package App\Form
+ */
 class ContactType extends TricksType
 {
 
@@ -21,13 +26,11 @@ class ContactType extends TricksType
     {
         $builder
 
-            ->add('firstname',TextType::class,$this->getConfiguration('Nom', 'Votre nom','form-control'))
-            ->add('lastname',TextType::class, $this->getConfiguration('Prénoms', 'Votre prénoms','form-control'))
-            ->add('email', EmailType::class,$this->getConfiguration('Email', 'Votre mail','form-control'))
-            ->add('contact',TextType::class, $this->getConfiguration('Contact', 'Votre contact','form-control'))
-            ->add('message', TextareaType::class,$this->getConfiguration('Mesage', 'Votre message','form-control'))
-
-
+            ->add('firstname', TextType::class, $this->getConfiguration('Nom', 'Votre nom', 'form-control'))
+            ->add('lastname', TextType::class, $this->getConfiguration('Prénoms', 'Votre prénoms', 'form-control'))
+            ->add('email', EmailType::class, $this->getConfiguration('Email', 'Votre email', 'form-control'))
+            ->add('contact', TextType::class, $this->getConfiguration('Contact', 'Votre contact', 'form-control'))
+            ->add('message', TextareaType::class, $this->getConfiguration('Message', 'Votre message', 'form-control'))
         ;
     }
 

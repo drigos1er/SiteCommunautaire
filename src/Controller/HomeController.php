@@ -6,8 +6,9 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\TricksRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class HomeController
@@ -15,12 +16,10 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class HomeController extends AbstractController
 {
-
-
     /**
      *  Affiche la page d'accueil du site
      * @param TricksRepository $repository
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function index(TricksRepository $repository)
     {
@@ -29,44 +28,41 @@ class HomeController extends AbstractController
     }
 
 
-
+    /**
+     * Formulaire de Contact permettant aux utilisateurs d'envoi des messages à la plateforme
+     * @param Request $request
+     * @param \Swift_Mailer $mailer
+     * @return RedirectResponse|Response
+     */
     public function contact(Request $request, \Swift_Mailer $mailer)
     {
+        // Générer le formulaire de contact
         $contact = new Contact();
         $form= $this->createForm(ContactType::class, $contact);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
-
-            $message = (new \Swift_Message('Hello Email'))
+            $message = (new \Swift_Message('Contactez nous'))
                 ->setSubject('Confirmation de la reception de votre message')
                 ->setFrom($contact->getEmail())
-                ->setTo('drigos1er@gmail.com')
+                ->setTo('drigos1er@yahoo.fr')
                 ->setBody(
                     $this->renderView(
-                    // templates/emails/registration.html.twig
+                        // le template du mail de confirmation
                         'view/emailconfirm.html.twig',
                         ['contact' => $contact]
                     ),
                     'text/html'
                 )
-
-
             ;
-
+            //Envoi du message
             $mailer->send($message);
 
-            $this->addFlash('success',' Votre message a bien été envoyé avec succès');
+            $this->addFlash('success', ' Votre message a bien été envoyé avec succès');
             return $this->redirectToRoute('sitecom_contactpage');
         }
 
 
 
-return $this->render('view/contact.html.twig', array('form' => $form->createView(),'current_menu'=>'contact'));
-
-
+        return $this->render('view/contact.html.twig', array('form' => $form->createView(), 'current_menu'=>'contact'));
     }
-
-
 }

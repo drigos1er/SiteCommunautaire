@@ -138,19 +138,16 @@ class AuthenticatedUser implements UserInterface
      */
     private $token;
 
-    /**
-     * @return string|null
-     */
-    public function getToken(): string
+
+    public function getToken()
     {
         return $this->token;
     }
 
     /**
-     * @param string|null $token
      * @return AuthenticatedUser
      */
-    public function setToken(string $token): AuthenticatedUser
+    public function setToken($token): AuthenticatedUser
     {
         $this->token = $token;
         return $this;
@@ -174,12 +171,13 @@ class AuthenticatedUser implements UserInterface
      * @ORM\PrePersist
      * @throws \Exception
      */
-    public function prePersist() {
-        if(empty($this->createdate)){
+    public function prePersist()
+    {
+        if (empty($this->createdate)) {
             $this->createdate =new \DateTime();
         }
 
-        if(empty($this->updatedate)){
+        if (empty($this->updatedate)) {
             $this->updatedate=new \DateTime();
         }
     }
@@ -269,7 +267,7 @@ class AuthenticatedUser implements UserInterface
         return $this->picture;
     }
 
-    public function setPicture( $picture): self
+    public function setPicture($picture): self
     {
         $this->picture = $picture;
 
@@ -388,7 +386,7 @@ class AuthenticatedUser implements UserInterface
      */
     public function getRoles()
     {
-       return ['ROLE_USERAUT'];
+        return ['ROLE_USERAUT'];
     }
 
 
@@ -415,13 +413,4 @@ class AuthenticatedUser implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
-
-
-
-
-
-
-
-
-
 }

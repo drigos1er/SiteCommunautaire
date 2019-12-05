@@ -76,6 +76,4 @@ class UpdatePwd
         $this->confirmpwd = $confirmpwd;
         return $this;
     }
-
-
 }

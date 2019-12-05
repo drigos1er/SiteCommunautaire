@@ -3,26 +3,39 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 class Contact
 {
 
-    private $id;
 
-
+    /**
+     * @Assert\NotBlank()
+     */
     private $firstname;
 
 
+    /**
+     * @Assert\NotBlank()
+     */
     private $lastname;
 
 
+    /**
+     *@Assert\NotBlank()
+     */
     private $email;
 
 
+    /**
+     * @Assert\NotBlank()
+     */
     private $contact;
 
 
+    /**
+     * @Assert\NotBlank()
+     */
     private $message;
 
 

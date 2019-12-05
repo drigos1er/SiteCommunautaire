@@ -55,12 +55,13 @@ class Comments
      * @ORM\PrePersist
      * @throws \Exception
      */
-    public function prePersist() {
-        if(empty($this->createdate)){
+    public function prePersist()
+    {
+        if (empty($this->createdate)) {
             $this->createdate =new \DateTime();
         }
 
-        if(empty($this->updatedate)){
+        if (empty($this->updatedate)) {
             $this->updatedate=new \DateTime();
         }
     }
@@ -129,8 +130,4 @@ class Comments
 
         return $this;
     }
-
-
-
-
 }

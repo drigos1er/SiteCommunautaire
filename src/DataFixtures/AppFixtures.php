@@ -6,13 +6,11 @@ use App\Entity\AuthenticatedUser;
 use App\Entity\Tricks;
 use App\DataFixtures\Faker\Provider;
 use App\Entity\TricksGroup;
-
 use App\Entity\Image;
 use App\Entity\Video;
 use App\Entity\Comments;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-
 
 /**
  * Class AppFixtures
@@ -22,14 +20,15 @@ class AppFixtures extends Fixture
 {
 
 
+    /**
+     * Remplissagge de la base donnéées à partir de figures
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         // Appelle de la librairie Faker
-       $faker=\Faker\Factory::create('fr_FR');
-
-
-
-        // on créé 10 Figures
+        $faker=\Faker\Factory::create('fr_FR');
+        // on créé 18 Figures
         for ($i = 0; $i < 18; $i++) {
             // création de groupes de figures
             $group = new TricksGroup();
@@ -43,8 +42,7 @@ class AppFixtures extends Fixture
             $usera->setEmail($faker->email);
             $usera->setContact($faker->phoneNumber);
             $usera->setPassword($faker->password(6, 6));
-            $usera->setPicture($faker->imageUrl(40,40));
-
+            $usera->setPicture($faker->imageUrl(40, 40));
 
             // création d'une figure
             $tricks= new Tricks();
@@ -55,8 +53,7 @@ class AppFixtures extends Fixture
             $tricks->setAuthenticateduser($usera);
             $tricks->setTricksgroup($group);
 
-            for ($k = 1; $k <= rand(2,6) ; $k++){
-
+            for ($k = 1; $k <= rand(2, 6); $k++) {
                 // création d'une vidéo
                 $video= new Video();
                 $video->setName($faker->imageUrl());
@@ -81,19 +78,11 @@ class AppFixtures extends Fixture
 
                 $manager->persist($comments);
             }
-
-
-
-
             $manager->persist($group);
 
             $manager->persist($usera);
             $manager->persist($tricks);
-
-
         }
-
-
         $manager->flush();
     }
 }

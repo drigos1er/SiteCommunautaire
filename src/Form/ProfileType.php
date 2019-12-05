@@ -8,6 +8,11 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Formulaire du Profil
+ * Class ProfileType
+ * @package App\Form
+ */
 class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -19,7 +24,7 @@ class ProfileType extends AbstractType
 
             ->add('contact')
 
-            ->add('picture', FileType::class,[
+            ->add('picture', FileType::class, [
                 'required'=>false,
                 'label'=>'Image de Profile',
                 'data_class' => null ])

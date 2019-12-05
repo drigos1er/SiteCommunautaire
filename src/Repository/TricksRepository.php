@@ -16,17 +16,26 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TricksRepository extends ServiceEntityRepository
 {
+    /**
+     * TricksRepository constructor.
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Tricks::class);
     }
 
+    /**
+     * @return Tricks[]
+     */
     public function findLastTricks()
     {
-        return $this->findBy([], ['updatedate' => 'DESC'], 15,
-            0 );
+        return $this->findBy([], ['updatedate' => 'DESC'], 15, 0);
     }
 
+    /**
+     * @return Query
+     */
     public function findAllTricksQuery(): Query
     {
         return $this->findTricksQuery()
@@ -34,45 +43,12 @@ class TricksRepository extends ServiceEntityRepository
     }
 
 
-
-       private function findTricksQuery(): ? QueryBuilder
-       {
+    /**
+     * @return QueryBuilder|null
+     */
+    private function findTricksQuery(): ? QueryBuilder
+    {
            return $this->createQueryBuilder('f')
-               ->orderBy('f.updatedate', 'DESC')
-
-
-           ;
-       }
-
-
-
-    // /**
-    //  * @return Figures[] Returns an array of Figures objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+               ->orderBy('f.updatedate', 'DESC');
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Figures
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-
 }

@@ -19,9 +19,6 @@
         <link href="/Sitecommunautaire/public/css/style.css" rel="stylesheet">
 
         <link href="/Sitecommunautaire/public/css/default.css" rel="stylesheet">
-
-
-
         <style>
             .carousel-page
             {
@@ -94,7 +91,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Figures <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="{%if current_menu=='showtrick'  %}active{% endif %}"><a href="{{ path('sitecom_listtrick',{'page':1}) }}">Nos Figures</a></li>
-                        <li class="{%if current_menu=='edittrick'  %}active{% endif %}"><a href="{{ path('sitecom_addtrick')}}">Créer une Figure</a></li>
+                        <li class="{%if current_menu=='addtrick'  %}active{% endif %}"><a href="{{ path('sitecom_addtrick')}}">Créer une Figure</a></li>
 
                     </ul>
                 </li>

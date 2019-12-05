@@ -29,7 +29,4 @@ class ResetPwd
         $this->username = $username;
         return $this;
     }
-
-
-
 }

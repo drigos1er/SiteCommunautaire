@@ -3,7 +3,7 @@
  */
 
 // Action de clique sur le bouton d'ajout de l'image
-$('#trick_image').click(function(){
+$('#trick_image').click(function () {
     // Recupération du  numéro du widget grâce à la valeur du champs hidden convertit en nombre grâce au +
     const index= +$('#cpt-widget').val();
     // Recuperation  le prototype  des entrées
@@ -22,7 +22,8 @@ $('#trick_image').click(function(){
 
 
 //fonction de gestion de suppression de Bloc
-function deleteBlocManagement() {
+function deleteBlocManagement()
+{
     $('button[data-action="delete"]').click(function () {
         //Permet d'acceder à l'id  bloc avec le outton d'attribut data-target
         const target= this.dataset.target;
@@ -35,7 +36,8 @@ function deleteBlocManagement() {
 
 
 //fonction de mise à jour du compteur de bloc
-function updatecountbloc() {
+function updatecountbloc()
+{
 
     const countbloc= +$('#trick_image div.form-group').length;
 
@@ -60,7 +62,7 @@ deleteBlocManagement();
  */
 
 // Action de clique sur le bouton d'ajout de vidéo
-$('#trick_video').click(function(){
+$('#trick_video').click(function () {
     // Recupération du  numéro du widget grâce à la valeur du champs hidden convertit en nombre grâce au +
     const indexvi= +$('#cpt-widgetvi').val();
     // Recuperation  le prototype  des entrées
@@ -79,7 +81,8 @@ $('#trick_video').click(function(){
 
 
 //fonction de gestion de suppression de Bloc
-function deleteBlocviManagement() {
+function deleteBlocviManagement()
+{
     $('button[data-action="deletevi"]').click(function () {
         //Permet d'acceder à l'id  bloc avec le outton d'attribut data-target
         const targetvi= this.dataset.target;
@@ -92,7 +95,8 @@ function deleteBlocviManagement() {
 
 
 //fonction de mise à jour du compteur de bloc
-function updatecountblocvi() {
+function updatecountblocvi()
+{
 
     const countblocvi= +$('#trick_video div.form-group').length;
 

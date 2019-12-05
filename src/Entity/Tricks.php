@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -30,16 +31,12 @@ class Tricks
      */
     private $comments;
 
-
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="tricks",cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id",onDelete="SET NULL")
      * @Assert\Valid()
      */
     private $image;
-
-
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Video", mappedBy="tricks", cascade={"persist", "remove"})
@@ -48,15 +45,11 @@ class Tricks
      */
     private $video;
 
-
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\TricksGroup", inversedBy="tricks")
      * @ORM\JoinColumn(name="tricksgroup_id", referencedColumnName="id",onDelete="SET NULL")
      */
     private $tricksgroup;
-
-
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\AuthenticatedUser", inversedBy="tricks")
@@ -64,11 +57,9 @@ class Tricks
      */
     private $authenticateduser;
 
-
-
-
     /**
-     * @Assert\Length(min=4, max=100, minMessage="Le titre doit excédé plus de 4 caractères",maxMessage="Le titre  ne doit pas excédé plus de 100 caractères")
+     * @Assert\Length(min=4, max=100, minMessage="Le titre doit excédé plus de 4 caractères",
+     *     maxMessage="Le titre  ne doit pas excédé plus de 100 caractères")
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank()
      */
@@ -96,12 +87,13 @@ class Tricks
      * @ORM\PrePersist
      * @throws \Exception
      */
-    public function prePersist() {
-        if(empty($this->createdate)){
+    public function prePersist()
+    {
+        if (empty($this->createdate)) {
             $this->createdate =new \DateTime();
         }
 
-        if(empty($this->updatedate)){
+        if (empty($this->updatedate)) {
             $this->updatedate=new \DateTime();
         }
     }
@@ -109,7 +101,7 @@ class Tricks
 
     public function __construct()
     {
-        $this->messages = new ArrayCollection();
+        $this->comments = new ArrayCollection();
         $this->image = new ArrayCollection();
         $this->video = new ArrayCollection();
     }
@@ -283,12 +275,4 @@ class Tricks
 
         return $this;
     }
-
-
-
-
-
-
-
-
 }

@@ -9,6 +9,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Form\TricksType;
 
+/**
+ * Formulaire d'envoi de mail de réinitialisation
+ * Class ResetPwdType
+ * @package App\Form
+ */
 class ResetPwdType extends TricksType
 {
 
@@ -17,7 +22,11 @@ class ResetPwdType extends TricksType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class,$this->getConfiguration('Nom d\'utilisateur', "Votre nom d'utilisateur",'form-control'))
+            ->add(
+                'username',
+                TextType::class,
+                $this->getConfiguration('Nom d\'utilisateur', "Votre nom d'utilisateur", 'form-control')
+            )
                    ;
     }
 

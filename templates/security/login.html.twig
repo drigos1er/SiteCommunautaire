@@ -49,25 +49,29 @@
                                 {% endfor  %}
                                 <form  action="{{ path('security_login') }}" method="post" >
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 col-md-offset-1">
                                             <div class="form-group">
                                                 <label for="username">
                                                     Nom d'utilisateur</label>
-                                                <input type="text" name="_username" class="form-control"  placeholder="Nom d'utilisateur"  required />
+
+                                                    <input type="text" name="_username" class="form-control"  placeholder="Nom d'utilisateur"  required />
+
                                             </div>
-                                            <div class="form-group">
-                                                <label for="password">
-                                                    Mot de Passe</label>
+
+
                                                 <div class="form-group">
+
+                                                    <label for="password">
+                                                        Mot de Passe</label>
                                                     <input type="password" name="_password" class="form-control"  placeholder="Mot de Passe"  required />
 
                                                 </div>
-                                            </div>
+
 
                                         </div>
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
-                                                Se connecter</button><a href="{{ path('sitecom_resetpwd') }}" style="color: red; font-weight: bold; font-style: italic" >
+                                            <button type="submit" class="btn btn-skin pull-center" id="btnContactUs">
+                                                Se connecter</button><a href="{{ path('sitecom_resetpwd') }}" style="color: red; font-weight: bold; font-style: italic" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 Mot de passe oublié ?</a>
                                         </div>
 
