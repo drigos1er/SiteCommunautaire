@@ -42,7 +42,7 @@ class Tricks
 
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Video", mappedBy="tricks")
+     * @ORM\OneToMany(targetEntity="App\Entity\Video", mappedBy="tricks", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="video_id", referencedColumnName="id",onDelete="SET NULL")
      * @Assert\Valid()
      */
