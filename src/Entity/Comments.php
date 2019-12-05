@@ -7,9 +7,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MessagesRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CommentsRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
-class Messages
+class Comments
 {
     /**
      * @ORM\Id()
@@ -19,16 +20,16 @@ class Messages
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\AuthenticatedUser", inversedBy="messages")
+     * @ORM\ManyToOne(targetEntity="App\Entity\AuthenticatedUser", inversedBy="comments")
      * @ORM\JoinColumn(name="authenticateduser_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $authenticateduser;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Figures", inversedBy="messages")
-     * @ORM\JoinColumn(name="figures_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tricks", inversedBy="comments")
+     * @ORM\JoinColumn(name="tricks_id", referencedColumnName="id", onDelete="SET NULL")
      */
-    private $figures;
+    private $tricks;
 
 
     /**
@@ -45,6 +46,22 @@ class Messages
      * @ORM\Column(type="datetime")
      */
     private $updatedate;
+
+
+    /**
+     * Permet de générer la date de création et de modification
+     * @ORM\PrePersist
+     * @throws \Exception
+     */
+    public function prePersist() {
+        if(empty($this->createdate)){
+            $this->createdate =new \DateTime();
+        }
+
+        if(empty($this->updatedate)){
+            $this->updatedate=new \DateTime();
+        }
+    }
 
     public function getId(): ?int
     {
@@ -99,14 +116,14 @@ class Messages
         return $this;
     }
 
-    public function getFigures(): ?Figures
+    public function getTricks(): ?Tricks
     {
-        return $this->figures;
+        return $this->tricks;
     }
 
-    public function setFigures(?Figures $figures): self
+    public function setTricks(?Tricks $tricks): self
     {
-        $this->figures = $figures;
+        $this->tricks = $tricks;
 
         return $this;
     }

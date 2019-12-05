@@ -19,6 +19,11 @@ class AuthenticatedUserRepository extends ServiceEntityRepository
         parent::__construct($registry, AuthenticatedUser::class);
     }
 
+
+
+
+
+
     // /**
     //  * @return AuthenticatedUser[] Returns an array of AuthenticatedUser objects
     //  */

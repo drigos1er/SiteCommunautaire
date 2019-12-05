@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\GroupFiguresRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TricksGroupRepository")
  */
-class GroupFigures
+class TricksGroup
 {
     /**
      * @ORM\Id()
@@ -19,14 +19,14 @@ class GroupFigures
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Figures", mappedBy="groupfigures")
+     * @ORM\OneToMany(targetEntity="App\Entity\Tricks", mappedBy="tricksgroup")
      */
-    private $figures;
+    private $tricks;
 
 
     public function __construct()
     {
-        $this->figures = new ArrayCollection();
+        $this->tricks = new ArrayCollection();
     }
 
 
@@ -54,30 +54,30 @@ class GroupFigures
     }
 
     /**
-     * @return Collection|Figures[]
+     * @return Collection|Tricks[]
      */
-    public function getFigures(): Collection
+    public function getTricks(): Collection
     {
-        return $this->figures;
+        return $this->tricks;
     }
 
-    public function addFigure(Figures $figure): self
+    public function addTrick(Tricks $trick): self
     {
-        if (!$this->figures->contains($figure)) {
-            $this->figures[] = $figure;
-            $figure->setGroupfigures($this);
+        if (!$this->tricks->contains($trick)) {
+            $this->tricks[] = $trick;
+            $trick->setTricksgroup($this);
         }
 
         return $this;
     }
 
-    public function removeFigure(Figures $figure): self
+    public function removeTricks(Tricks $trick): self
     {
-        if ($this->figures->contains($figure)) {
-            $this->figures->removeElement($figure);
+        if ($this->tricks->contains($trick)) {
+            $this->tricks->removeElement($trick);
             // set the owning side to null (unless already changed)
-            if ($figure->getGroupfigures() === $this) {
-                $figure->setGroupfigures(null);
+            if ($trick->getTricksgroup() === $this) {
+                $trick->setTricksgroup(null);
             }
         }
 

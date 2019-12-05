@@ -1,0 +1,117 @@
+{# ---- GESTION DES IMAGES ----#}
+{# Inclure un Bloc pour la mise en forme de la collection#}
+{% block _tricks_image_widget %}
+
+    {{ form_widget(form) }}
+
+    {# Ajouter un champ cacher afin de compter les widget#}
+    <input type="hidden" id="cpt-widget" value="0">
+
+    <div class="form-group">
+        <br>
+        <button type="button" class="btn btn-primary" id="trick_image">
+            Cliquez pour  Ajouter une image</button>
+    </div>
+{% endblock %}
+
+
+{# Permet d'afficher que les wigdet d'une row (sans label, erreur..)#}
+{% block _tricks_image_entry_row %}
+    {{ form_widget(form) }}
+
+{% endblock %}
+
+{# Permet de mettre en forme  que les wigdet d'une row #}
+{% block _tricks_image_entry_widget %}
+
+
+    {# Créer d'un grand bloc avec un Id avant d'identifier chaque collection (name + alt)#}
+    <div class="form-group " id="block_{{ id }}">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row">
+                    <br>
+                    <div class="col-lg-5">
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control','Placeholder': 'Saisir lien de l\'image'}}) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.alt, {'attr': {'class': 'form-control','Placeholder': 'Description de l\'image'}}) }}
+
+                        {{ form_errors(form.alt) }}
+                    </div>
+                </div>
+            </div>
+            {# Bouton de suppression d'un bloc (identitfié par le bloc_id#}
+            <div class="col-lg-3">
+                <br>
+                <button type="button" class="btn-danger" data-action="delete" data-target="#block_{{ id }}">Supprimer</button>
+
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{# ---- GESTION DES VIDEOS ----#}
+
+{# Inclure un Bloc pour la mise en forme de la collection#}
+{% block _tricks_video_widget %}
+
+    {{ form_widget(form) }}
+
+    {# Ajouter un champ cacher afin de compter les widget#}
+    <input type="hidden" id="cpt-widgetvi" value="0">
+
+    <div class="form-group">
+        <br>
+        <button type="button" class="btn btn-info" id="trick_video">
+            Cliquez pour  Ajouter une video</button>
+    </div>
+{% endblock %}
+
+
+{# Permet d'afficher que les wigdet d'une row (sans label, erreur..)#}
+{% block _tricks_video_entry_row %}
+    {{ form_widget(form) }}
+
+{% endblock %}
+
+{# Permet de mettre en forme  que les wigdet d'une row #}
+{% block _tricks_video_entry_widget %}
+
+
+    {# Créer d'un grand bloc avec un Id avant d'identifier chaque collection (name + alt)#}
+    <div class="form-group " id="blockvi_{{ id }}">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row">
+                    <br>
+                    <div class="col-lg-5">
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control','Placeholder': 'Ajouter une balise embed provenant (Youtube, Dailymotion…)'}}) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.alt, {'attr': {'class': 'form-control','Placeholder': 'Description de la video'}}) }}
+
+                        {{ form_errors(form.alt) }}
+                    </div>
+                </div>
+            </div>
+            {# Bouton de suppression d'un bloc (identitfié par le bloc_id#}
+            <div class="col-lg-3">
+                <br>
+                <button type="button" class="btn-danger" data-action="deletevi" data-target="#blockvi_{{ id }}">Supprimer</button>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+    </div>
+{% endblock %}

@@ -10,15 +10,24 @@
     <title>{% block title %}{% endblock %}</title>
     {% block stylesheets %}
     <!-- Bootstrap Core CSS -->
-    <link href="{{ asset('build/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
 
+    <link href="{{ asset('build/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+   <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
     <!-- Fonts -->
     <link href="{{ asset('build/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('build/css/animate.css') }}" rel="stylesheet" />
     <!-- Squad theme CSS -->
     <link href="{{ asset('build/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('build/css/default.css') }}" rel="stylesheet">
-
+    {#  <link href="{{ asset('build/css/default.css') }}" rel="stylesheet">#}
+        <style>
+            .carousel-page
+            {
+                width:100%;
+                height:400px;
+                background-color:#5f666d;
+                color:white;
+            }
+        </style>
     {% endblock %}
 
 </head>
@@ -74,30 +83,41 @@
 </nav>
 {% block body %}
 {% endblock %}
+
 {% block javascripts %}
 <footer>
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-lg-12">
 
-                <p>&copy;2019SnowTricks.Tous droits Réservés.</p>
+                <p>&copy;2019 SnowTricks.Tous droits Réservés.</p>
 
             </div>
         </div>
     </div>
 </footer>
 
+    <!-- Core JavaScript Files -->
+    <script src="{{ asset('build/js/jquery.min.js') }}"></script>
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+    <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
 
-<!-- Core JavaScript Files -->
-<script src="{{ asset('build/js/jquery.min.js') }}"></script>
-<script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('build/js/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('build/js/jquery.scrollTo.js') }}"></script>
-<script src="{{ asset('build/js/wow.min.js') }}"></script>
-<!-- Custom Theme JavaScript -->
-<script src="{{ asset('build/js/custom.js') }}"></script>
-<script src="{{ asset('build/contactform/contactform.js') }}"></script>
+    <!-- Core JavaScript Files -->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>-->
+    <script src="{{ asset('build/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('build/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('build/js/jquery.scrollTo.js') }}"></script>
+    <script src="{{ asset('build/js/wow.min.js') }}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset('build/js/custom.js') }}"></script>
+    <script src="{{ asset('build/contactform/contactform.js') }}"></script>
+
+
+
 {% endblock %}
+{% block js %}{% endblock %}
+
 </body>
 
 </html>
