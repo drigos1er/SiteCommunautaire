@@ -35,18 +35,37 @@
                     </div>
                     <div class="row">
                         {% set i = 0 %}
-                        {% for listfigure in listfigures %}
+                        {% for listtrick in listtricks %}
+
+
+
+
 
                         <div class="col-md-3">
                             <div class="wow bounceInUp" data-wow-delay="0.2s">
                                 <div class="team boxed-grey">
                                     <div class="inner">
 
-                                        <div class="avatar"><img src="{{ asset('build/img/team/1.jpg')|imagine_filter('thumb') }}" alt="" class="img-responsive img-circle" /></div>
 
-                                        <h5>{{ listfigure.name }}</h5>
-                                        <a href class="btn btn-warning btn-xsm">  <i class="fa fa-2x fa-edit"></i></a>
-                                        <a href class="btn btn-danger btn-xsm">  <i class="fa fa-2x fa-trash"></i></a>
+
+
+                                        {% for img in listtrick.image %}
+                                            {% if loop.first %}
+                                                <h5 class="card-title"><a href="{{ path('sitecom_showtrick',{id:listtrick.id }) }}"> {{ listtrick.name }}</a></h5>
+                                                <div class="avatar"><img src="{{ img.name}}" alt="" class="img-responsive" /></div>
+
+
+                                                <a href="{{ path('sitecom_edittrick',{id:listtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
+                                                <a href="{{ path('sitecom_deletetrick',{id:listtrick.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
+
+
+                                            {% endif %} {% endfor %}
+
+
+
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +84,7 @@
                     </div>
 
                     <div class="navigation">
-                        {{ knp_pagination_render(listfigures) }}
+                        {{ knp_pagination_render(listtricks) }}
                     </div>
 
 

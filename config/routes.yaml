@@ -36,6 +36,11 @@ sitecom_edittrick:
   defaults: { _controller: App\Controller\TrickController::edittrick }
 
 
+sitecom_deletetrick:
+  path:     /deletetrick/{id}
+  defaults: { _controller: App\Controller\TrickController::deletetrick }
+
+
 
 sitecom_listtrick:
   path:     /listtrick

@@ -2,45 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68556432-ab3e-40bc-bd0f-cb7572343c8d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Composer_06_11_2019_11_29_c.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_06_11_2019_11_34_s.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SiteCommunautaire.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SiteCommunautaire.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Composer_02_06_19_19_59_c.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_27_05_19_21_03_s.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80b2be61-b45e-4884-be1d-c8aac27f40db.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/80b2be61-b45e-4884-be1d-c8aac27f40db.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/AuthenticatedUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/AuthenticatedUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Figures.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GroupFigures.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/MediaImage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/MediaVideo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Messages.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/FiguresType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/GroupFiguresType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MediaImageType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MediaVideoType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20190620190233.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AuthenticatedUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AuthenticatedUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/FiguresRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/GroupFiguresRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MediaImageRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MediaVideoRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MessagesRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/view/createfigure.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/view/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/view/home.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/view/listfigures.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TrickController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TrickController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/view/listtrick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/view/listtrick.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/view/showtrick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/view/showtrick.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -382,7 +348,7 @@
       <workItem from="1573617260189" duration="318000" />
       <workItem from="1573636404703" duration="20708000" />
       <workItem from="1573710934672" duration="4881000" />
-      <workItem from="1573721106942" duration="2119000" />
+      <workItem from="1573721106942" duration="6596000" />
     </task>
     <servers />
   </component>
@@ -421,7 +387,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/view/showtrick.html.twig</url>
-          <line>60</line>
+          <line>61</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
