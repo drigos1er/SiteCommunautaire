@@ -16,17 +16,54 @@
                         <div class="row">
                             <div class="col-lg-12 ">
                                 <div class="wow bounceInDown" data-wow-delay="0.4s">
-                                    {% for img in shtrick.image %}
-                                        {% if loop.first %}
 
-                                        <div class="section-heading"  style="background-image: url({{ img.name }} ); height: 300px; width: 1200px;">
-                                            <h2 style="color: white">{{ shtrick.name }} </h2>
+                                    {% if shtrick.image|length >0 %}
+
+                                    {% for img in shtrick.image %}
+                                    {% if loop.first %}
+
+                                        <div class="section-heading"  style="background-image: url({{ img.name }} ); height: 300px; width: 1200px;  background-repeat: no-repeat; background-size: 100%">
+                                            <h2 style="color: white" class="bg-dark">{{ shtrick.name }}&nbsp;&nbsp;
+                                                {% if app.user %}
+                                                    <a href="{{ path('sitecom_edittrick',{id:shtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
+                                                    <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
+                                                {% endif %} </h2>
                                             <i class="fa fa-2x fa-angle-down"></i>
 
                                         </div>
 
 
-                                    {% endif %} {% endfor %}
+                                    {% endif %}
+
+
+                                    {% endfor %}
+
+
+                                    {% else %}
+
+
+                                        <div class="section-heading"  style="background-image: url({{ asset('build/img/team/1.jpg') }} ); height: 300px; width: 1200px;  background-repeat: no-repeat; background-size: 100%">
+                                            <h2 style="color: white" class="bg-dark">{{ shtrick.name }}&nbsp;&nbsp;
+                                                {% if app.user %}
+                                                    <a href="{{ path('sitecom_edittrick',{id:shtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
+                                                    <a href="{{ path('sitecom_deletetrick',{id:shtrick.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
+                                                {% endif %} </h2>
+                                            <i class="fa fa-2x fa-angle-down"></i>
+
+                                        </div>
+
+
+
+
+
+
+
+                                    {% endif %}
+
+
+
+
+
 
                                 </div>
                             </div>
@@ -68,7 +105,17 @@
                         <div class="col-lg-12 ">
                             <div class="boxed-grey">
 
-                                <span style="color: darkblue"> <i class="fa fa-user" style="color:darkblue"></i>
+
+
+                                <span style="color: darkblue"> <i class="fa fa-tags" style="color:darkblue"></i> Descritption: {{ shtrick.description}} </span> &nbsp;
+
+                          &nbsp;&nbsp;<span  style="color: darkblue"> <i class="fa fa-calendar" style="color:darkblue"></i> Groupe:</span>
+
+                                        {{  shtrick.tricksgroup.name}}
+
+
+                                &nbsp;<br>
+                                <span style="color: brown; font-size: 11px; font-style: italic"> <i class="fa fa-user" style="color:brown"></i>
                                     Crée par
 
 
@@ -79,19 +126,9 @@
                                     le  {{ shtrick.createdate|date("m/d/Y") }}
                                 </span>
                                 &nbsp;&nbsp;&nbsp;
-
-                                <span style="color: darkblue"> <i class="fa fa-tags" style="color:darkblue"></i> Descritption: {{ shtrick.description}} </span> &nbsp;
-
-                          &nbsp;&nbsp;<span  style="color: darkblue"> <i class="fa fa-calendar" style="color:darkblue"></i> Groupe:</span>
-
-                                        {{  shtrick.tricksgroup.name}}
-
-
-                                &nbsp;
-
                                 &nbsp;&nbsp;
 
-                                <span style="color: darkblue"> <i class="fa fa-clock-o" style="color:darkblue"></i>Dernière mise à jour: {{ shtrick.updatedate|date("m/d/Y  H:m:s") }}   </span> &nbsp;
+                                <span style="color: brown; font-size: 11px; font-style: italic"> <i class="fa fa-clock-o" style="color:brown"></i> mise à jour le {{ shtrick.updatedate|date("m/d/Y  H:m:s") }}   </span> &nbsp;
 
 
 
@@ -111,7 +148,14 @@
                         <div class="col-md-6 col-md-offset-3">
                            {% if shtrick.comments|length >0 %}
                                <h2 class="mb-3">Les Commentaires</h2>
+
                                {% for comment in shtrick.comments %}
+
+
+
+
+
+
                                <div class="bg-light rounded mb-3 px-3 py-3">
                                    <strong>{{ comment.authenticateduser.username }}</strong> <i class="fa fa-comments-o" style="color:darkblue"></i>:
                                    <blockquote>
@@ -122,16 +166,20 @@
                                    </blockquote>
 
                                </div>
+
+
+
+
                                {% endfor %}
                             {% else  %}
-                               <H2>Aucun commentaire sur cette figure</H2>
+                               <h5>Aucun commentaire sur cette figure</h5>
                             {% endif %}
                         </div>
 
 <br>
                     </div>
 
-
+                    {% if app.user %}
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="form-group">
@@ -147,6 +195,7 @@
 
                     </div>
 
+                    {% endif %}
 
 
                 </div>

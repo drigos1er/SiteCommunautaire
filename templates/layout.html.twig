@@ -18,7 +18,8 @@
     <link href="{{ asset('build/css/animate.css') }}" rel="stylesheet" />
     <!-- Squad theme CSS -->
     <link href="{{ asset('build/css/style.css') }}" rel="stylesheet">
-    {#  <link href="{{ asset('build/css/default.css') }}" rel="stylesheet">#}
+
+    <link href="{{ asset('build/color/default.css') }}" rel="stylesheet">
         <style>
             .carousel-page
             {
@@ -38,6 +39,7 @@
     <div id="load"></div>
 </div>
 
+
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header page-scroll">
@@ -53,7 +55,8 @@
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ path('sitecom_homepage') }}">Accueil</a></li>
-                <li><a href="#about">Figures</a></li>
+
+                <li><a href="{{ path('sitecom_listtrick') }}">Figures</a></li>
 
                 <li><a href="#contact">Contact</a></li>
                 {%if not app.user  %}
@@ -75,12 +78,20 @@
                     </li>
 
                 {% endif %}
+
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
 </nav>
+
+
+
+
+
+
 {% block body %}
 {% endblock %}
 

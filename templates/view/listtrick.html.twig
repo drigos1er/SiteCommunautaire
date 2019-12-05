@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="container">
-
+                     <button class="btn btn-success" ><a href="{{ path('sitecom_addtrick') }}" style="color: white"> <i class="fa fa-chevron-circle-right"></i> Cliquez ici pour ajouter une nouvelle figure </a></button>
                     <div class="row">
                         <div class="col-lg-2 col-lg-offset-5">
                             <hr class="marginbot-50">
@@ -54,10 +54,10 @@
                                                 <h5 class="card-title"><a href="{{ path('sitecom_showtrick',{id:listtrick.id }) }}"> {{ listtrick.name }}</a></h5>
                                                 <div class="avatar"><img src="{{ img.name}}" alt="" class="img-responsive" /></div>
 
-
+                                            {% if app.user %}
                                                 <a href="{{ path('sitecom_edittrick',{id:listtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
                                                 <a href="{{ path('sitecom_deletetrick',{id:listtrick.id }) }}" class="btn btn-danger btn-xsm">  <i class="fa fa-trash-o"></i></a>
-
+                                            {% endif %}
 
                                             {% endif %} {% endfor %}
 
