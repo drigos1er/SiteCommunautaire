@@ -13,16 +13,17 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
 class TricksType extends AbstractType
 {
 
     /**
+     * Methode de configuration de champs de formulaire
      * @param  String $label
      * @param String $placeholder
      * @return array
      */
-    private function getConfiguration($label, $placeholder,$class){
+    public function getConfiguration($label, $placeholder, $class)
+    {
         return [
             'label'=>$label,
             'attr'=> [
@@ -35,15 +36,20 @@ class TricksType extends AbstractType
     }
 
     /**
+     * Formulaire de création de Figures
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, $this->getConfiguration('Nom', 'Nom de la figure','form-control'))
-            ->add('description', TextType::class, $this->getConfiguration('Description', 'Description de la figure','form-control'))
-            ->add('tricksgroup',EntityType::class, [
+            ->add('name', TextType::class, $this->getConfiguration('Nom', 'Nom de la figure', 'form-control'))
+            ->add(
+                'description',
+                TextType::class,
+                $this->getConfiguration('Description', 'Description de la figure', 'form-control')
+            )
+            ->add('tricksgroup', EntityType::class, [
                 'class' => TricksGroup::class,
                 'label'=>'Groupe de figure',
                 'placeholder'=>'--- Choisir un groupe ---',
@@ -76,9 +82,6 @@ class TricksType extends AbstractType
             ])
 
         ;
-
-
-
     }
 
     /**

@@ -1,14 +1,11 @@
 {% extends 'layout.html.twig' %}
-
-
-
 {% block title %}SnowTricks|Accueil{% endblock %}
 
         {% block body %}
 
 
             <!-- Section: intro -->
-            <section id="intro" class="intro">
+            <section id="intro" class="intro" >
 
                 <div class="slogan">
                     <h2>BIENVENUE SUR  <span class="text_color">SNOWTRICKS</span> </h2>
@@ -49,29 +46,39 @@
                     <div class="row">
                         {% set i = 0 %}
                         {% for trick in tricks %}
-
+                        {% for img in trick.image %}
+                            {% if loop.first %}
                         <div class="col-md-3">
                             <div class="wow bounceInUp" data-wow-delay="0.2s">
                                 <div class="team boxed-grey">
                                     <div class="inner">
 
-                                        <div class="avatar"><img src="{{ asset('build/img/team/1.jpg') }}" alt="" class="img-responsive img-circle" /></div>
+                                        <div class="avatar"><img src="{{ img.name}}" alt="" class="img-responsive" /></div>
 
-                                        <h5>{{ trick.name }}</h5>
-                                        <a href class="btn btn-warning btn-xsm">  <i class="fa fa-2x fa-edit"></i></a>
-                                        <a href class="btn btn-danger btn-xsm">  <i class="fa fa-2x fa-trash"></i></a>
+                                        <a href="{{ path('sitecom_showtrick',{id:trick.id }) }}" style="text-decoration: underline">{{ trick.name }}</a>&nbsp;&nbsp;&nbsp;
+                                        {% if app.user and app.user==trick.authenticateduser %}
+                                            <a href="{{ path('sitecom_edittrick',{id:trick.id }) }}" title="Modifier">  <i class="fa  fa-pencil" style="color: orange"></i></a>&nbsp;&nbsp;
+                                            <a href="{{ path('sitecom_deletetrick',{id:trick.id }) }}"  onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ trick.name }} ?')" title="Supprimer">  <i class="fa fa-trash-o" style="color: red"></i></a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
                         </div>
+                            {% endif %} {% endfor %}
                             {% set i= i + 1 %}
 
                         {% endfor %}
+                        <br><br><br>
+                        {% if i >= 15 %}
+
+                        <div class="row">
+                            <div class="col-lg-12 ">
+                                <div ><a href="{{ path('sitecom_listtrick',{'page':1}) }}" class="btn btn-info " >
+                                        <i class="fa fa-spinner fa-spin"></i> Voir plus</a></div></div></div>
 
 
 
-
-
+                        {% endif %}
 
                         <div style="text-align: right" class="col-md-12 col-lg-12" >
 
@@ -86,6 +93,7 @@
 
 
                     </div>
+
                 </div>
 
 

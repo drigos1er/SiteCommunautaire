@@ -43,8 +43,39 @@ sitecom_deletetrick:
 
 
 sitecom_listtrick:
-  path:     /listtrick
+  path:     /listtrick/{page}
   defaults: { _controller: App\Controller\TrickController::listtrick}
 
+sitecom_editcomment:
+  path:     /editcomment/{id}
+  defaults: { _controller: App\Controller\TrickController::editcomment }
 
 
+sitecom_deletecomment:
+  path:     /deletecomment/{id}
+  defaults: { _controller: App\Controller\TrickController::deletecomment }
+
+sitecom_contactpage:
+  path:     /contact
+  defaults: { _controller: App\Controller\HomeController::contact }
+
+
+sitecom_profilepage:
+  path:     /profile/{id}
+  defaults: { _controller: App\Controller\SecurityController::profile}
+
+
+
+sitecom_updatepwd:
+  path:     /updatepwd
+  defaults: { _controller: App\Controller\SecurityController::updatepwd}
+
+
+sitecom_resetpwd:
+  path:     /resetpwd
+  defaults: { _controller: App\Controller\SecurityController::resetpwd}
+
+
+sitecom_resetmail:
+  path:     /resetting/{id}/{token}
+  defaults: { _controller: App\Controller\SecurityController::resetting}

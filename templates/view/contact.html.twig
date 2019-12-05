@@ -1,0 +1,99 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block title %}SnowTricks|Formulaire de Contact{% endblock %}
+{# Permet d'inclure des blocs de  thème inclus dans la page avec _self#}
+
+        {% block body %}
+
+
+
+            <!-- Section: contact -->
+            <section id="contact" class="home-section text-center">
+                <div class="heading-contact">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="wow bounceInDown" data-wow-delay="0.4s">
+                                    <div class="section-heading">
+                                        <h2>CONTACTEZ NOUS</h2>
+                                        <i class="fa fa-2x fa-angle-down"></i>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+
+
+                    <div class="row">
+                        {% for message in app.flashes('success')  %}
+                            <div class="alert alert-success"> {{ message }}</div>
+
+                        {% endfor  %}
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="boxed-grey">
+
+
+
+                                {{ form_start(form) }}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="name">
+                                                    {{ form_label(form.firstname) }}</label>
+                                                {{ form_widget(form.firstname) }}
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name">
+                                                    {{ form_label(form.lastname) }}</label>
+                                                {{ form_widget(form.lastname) }}
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name">
+                                                    {{ form_label(form.email) }}</label>
+                                                {{ form_widget(form.email) }}
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name">
+                                                    {{ form_label(form.contact) }}</label>
+                                                {{ form_widget(form.contact) }}
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="name">
+                                                    {{ form_label(form.message) }}</label>
+                                                {{ form_widget(form.message) }}
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-skin pull-center" id="btnContactUs">
+                                            Envoyer votre message</button>
+                                        </div>
+                                    </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                </div>
+            </section>
+            <!-- /Section: contact -->
+
+
+        {% endblock %}
+
+
+
+
+
+

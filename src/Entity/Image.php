@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
  */
@@ -23,18 +24,17 @@ class Image
      */
     private $tricks;
 
-
-
-
     /**
      * @Assert\Url()
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @Assert\Length( max=150, maxMessage="La description de l'image ne doit pas depasser 150 caractères")
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
      */
     private $alt;
 
@@ -106,9 +106,6 @@ class Image
     public function setTricks(?Tricks $tricks): self
     {
         $this->tricks = $tricks;
-
         return $this;
     }
-
-
 }

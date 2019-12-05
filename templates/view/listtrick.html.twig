@@ -30,18 +30,13 @@
                      <button class="btn btn-success" ><a href="{{ path('sitecom_addtrick') }}" style="color: white"> <i class="fa fa-chevron-circle-right"></i> Cliquez ici pour ajouter une nouvelle figure </a></button>
 
 
+<br><br>
 
+                    {% for message in app.flashes('success')  %}
+                        <div class="alert alert-success"> {{ message }}</div>
 
+                    {% endfor  %}
 
-                    <div class="row">
-                        <div class="col-lg-2 col-lg-offset-5">
-                            <hr class="marginbot-50">
-                            {% for message in app.flashes('success')  %}
-                                <div class="alert alert-success"> {{ message }}</div>
-
-                            {% endfor  %}
-                        </div>
-                    </div>
                     <div class="row">
                         {% set i = 0 %}
                         {% for listtrick in listtricks %}
@@ -56,26 +51,28 @@
                                     <div class="inner">
 
 
+                                        <h5 class="card-title"><a href="{{ path('sitecom_showtrick',{id:listtrick.id }) }}"> {{ listtrick.name }}</a></h5>
 
-
+                                        {% if listtrick.image|length >0 %}
                                         {% for img in listtrick.image %}
                                             {% if loop.first %}
-                                                <h5 class="card-title"><a href="{{ path('sitecom_showtrick',{id:listtrick.id }) }}"> {{ listtrick.name }}</a></h5>
-                                                <div class="avatar"><img src="{{ img.name}}" alt="" class="img-responsive" /></div>
 
 
+                                                <div class="avatar"><img src="{{ img.name}}" alt="{{ img.alt}}" class="img-responsive" style="width: 250px; height: 100px; "  /></div>
+                                            {% endif %}
+
+                                        {% endfor %}
+                                      {% else %}
+                                          <div class="avatar"><img src="https://cdn.pixabay.com/photo/2017/06/09/10/04/males-2386403_960_720.jpg" class="img-responsive" style="width: 250px; height: 100px; " alt="default_snow" /></div>
+                                        {% endif %}
 
 
-                                                {% if app.user and app.user==listtrick.authenticateduser %}
-                                                    <a href="{{ path('sitecom_edittrick',{id:listtrick.id }) }}" class="btn btn-warning btn-xsm">  <i class="fa  fa-edit"></i></a>
-                                                    <a href="{{ path('sitecom_deletetrick',{id:listtrick.id }) }}" class="btn btn-danger btn-xsm" onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ listtrick.name }} ?')">  <i class="fa fa-trash-o"></i></a>
-                                                {% endif %}
+                                            {% if app.user and app.user==listtrick.authenticateduser %}
+                                                <a href="{{ path('sitecom_edittrick',{id:listtrick.id }) }}" style="color: orange" title="Modifier" >  <i class="fa  fa-pencil"></i></a>&nbsp;&nbsp;
+                                                <a href="{{ path('sitecom_deletetrick',{id:listtrick.id }) }}"  onclick="return confirm('Êtes vous sûr de vouloir supprimer la figure :{{ listtrick.name }} ?')" style="color: red" title="Supprimer">  <i class="fa fa-trash-o"></i></a>
+                                            {% endif %}
 
 
-
-
-
-                                            {% endif %} {% endfor %}
 
 
 
@@ -97,11 +94,12 @@
 
 
 
-                    </div>
+                    </div><br><br>
 
-                    <div class="navigation">
-                        {{ knp_pagination_render(listtricks) }}
-                    </div>
+
+   {% include'view/pagination.html.twig' with {'route': 'sitecom_listtrick'} %}
+
+
 
 
 

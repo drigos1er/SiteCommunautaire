@@ -10,13 +10,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AuthenticatedUserRepository")
  * @UniqueEntity(fields={"username"},
  * message="Cette valeur est dejà utilisé par un autre utilisateur"
  * )
- * @Vich\Uploadable
  * @ORM\HasLifecycleCallbacks()
  */
 class AuthenticatedUser implements UserInterface
@@ -54,14 +53,7 @@ class AuthenticatedUser implements UserInterface
      */
     private $username;
 
-    /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
-     * @Vich\UploadableField(mapping="users_image", fileNameProperty="picture")
-     *
-     * @var File
-     */
-    private $imagefile;
+
 
 
 
@@ -82,7 +74,7 @@ class AuthenticatedUser implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=25)
      * @Assert\NotNull
      */
     private $contact;
@@ -115,18 +107,77 @@ class AuthenticatedUser implements UserInterface
      */
     private $updatedate;
 
+    /**
+     * @return mixed
+     */
+    public function getPwdtokendat()
+    {
+        return $this->pwdtokendat;
+    }
+
+    /**
+     * @param mixed $pwdtokendat
+     * @return AuthenticatedUser
+     */
+    public function setPwdtokendat($pwdtokendat)
+    {
+        $this->pwdtokendat = $pwdtokendat;
+        return $this;
+    }
+
+
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     */
+    private $pwdtokendat;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token;
+
+
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * @return AuthenticatedUser
+     */
+    public function setToken($token): AuthenticatedUser
+    {
+        $this->token = $token;
+        return $this;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Permet de générer la date de création et de modification
      * @ORM\PrePersist
      * @throws \Exception
      */
-    public function prePersist() {
-        if(empty($this->createdate)){
+    public function prePersist()
+    {
+        if (empty($this->createdate)) {
             $this->createdate =new \DateTime();
         }
 
-        if(empty($this->updatedate)){
+        if (empty($this->updatedate)) {
             $this->updatedate=new \DateTime();
         }
     }
@@ -211,12 +262,12 @@ class AuthenticatedUser implements UserInterface
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function getPicture()
     {
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture($picture): self
     {
         $this->picture = $picture;
 
@@ -335,7 +386,7 @@ class AuthenticatedUser implements UserInterface
      */
     public function getRoles()
     {
-       return ['ROLE_USERAUT'];
+        return ['ROLE_USERAUT'];
     }
 
 
@@ -362,26 +413,4 @@ class AuthenticatedUser implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
-
-
-
-    public function getImagefile(): ?File
-    {
-        return $this->imagefile;
-    }
-
-    public function setImagefile(File $imagefile): self
-    {
-        $this->imagefile = $imagefile;
-
-        // Only change the updated af if the file is really uploaded to avoid database updates.
-        // This is needed when the file should be set when loading the entity.
-        if ($this->imagefile instanceof UploadedFile) {
-            $this->updatedate = new \DateTime('now');
-        }
-
-
-        return $this;
-    }
-
 }

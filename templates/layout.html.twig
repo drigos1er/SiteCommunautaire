@@ -9,17 +9,16 @@
 
     <title>{% block title %}{% endblock %}</title>
     {% block stylesheets %}
-    <!-- Bootstrap Core CSS -->
 
-    <link href="{{ asset('build/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-   <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
-    <!-- Fonts -->
-    <link href="{{ asset('build/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('build/css/animate.css') }}" rel="stylesheet" />
-    <!-- Squad theme CSS -->
-    <link href="{{ asset('build/css/style.css') }}" rel="stylesheet">
+    {# Bootstrap Core CSS
+    <link href="{{ asset('build/css/app.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('build/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">#}
+        <link href="/Sitecommunautaire/public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/Sitecommunautaire/public/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="/Sitecommunautaire/public/css/animate.css" rel="stylesheet" />
+        <link href="/Sitecommunautaire/public/css/style.css" rel="stylesheet">
 
-    <link href="{{ asset('build/color/default.css') }}" rel="stylesheet">
+        <link href="/Sitecommunautaire/public/css/default.css" rel="stylesheet">
         <style>
             .carousel-page
             {
@@ -28,8 +27,40 @@
                 background-color:#5f666d;
                 color:white;
             }
+
+
+            .flex{
+                display: flex;
+                flex-wrap: wrap;
+
+
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            .flex img {
+                background-repeat: no-repeat; background-size: 100%;
+            }
+
+
+            .flex div
+            {
+                width:300px;
+
+                border: solid 1px black;
+                height: 200px;
+                overflow: hidden;
+                position: relative;
+                /*
+
+ padding-bottom: 56.25%;
+                box-shadow: 0 10px 60px 0 rgba(0,0,0,0.2);*/
+
+            }
         </style>
     {% endblock %}
+
 
 </head>
 
@@ -38,7 +69,6 @@
 <div id="preloader">
     <div id="load"></div>
 </div>
-
 
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
@@ -54,24 +84,36 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ path('sitecom_homepage') }}">Accueil</a></li>
+                <li class="{%if current_menu==''  %}active{% endif %}"><a href="{{ path('sitecom_homepage') }}">Accueil</a></li>
 
-                <li><a href="{{ path('sitecom_listtrick') }}">Figures</a></li>
 
-                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Figures <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="{%if current_menu=='showtrick'  %}active{% endif %}"><a href="{{ path('sitecom_listtrick',{'page':1}) }}">Nos Figures</a></li>
+                        <li class="{%if current_menu=='addtrick'  %}active{% endif %}"><a href="{{ path('sitecom_addtrick')}}">Créer une Figure</a></li>
+
+                    </ul>
+                </li>
+
+
+
+
+                <li><a href="{{ path('sitecom_contactpage') }}">Contact</a></li>
                 {%if not app.user  %}
 
 
-                    <li><a href="{{ path('security_login') }}">Se Connecter</a></li>
+                    <li class="{%if current_menu=='login'  %}active{% endif %}"><a href="{{ path('security_login') }}">Se Connecter</a></li>
 
                 {% else %}
 
 
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }} <b class="caret"></b><img src="../public/images/users/{{ app.user.picture}}" alt="" class="img-responsive img-circle"  style="height: 40px; width: 40px;"/></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }} <b class="caret"></b><img src="/Sitecommunautaire/public/images/users/{{ app.user.picture}}" alt="" class="img-responsive img-circle"  style="height: 40px; width: 40px;"/></a>
                         <ul class="dropdown-menu">
 
+                            <li><a href="{{ path('sitecom_profilepage',{'id':app.user.id}) }}">Mon Profil</a></li>
                             <li><a href="{{ path('security_logout') }}">Deconnexion</a></li>
 
                         </ul>
@@ -86,11 +128,6 @@
     </div>
     <!-- /.container -->
 </nav>
-
-
-
-
-
 
 {% block body %}
 {% endblock %}
@@ -107,28 +144,26 @@
         </div>
     </div>
 </footer>
-
-    <!-- Core JavaScript Files -->
-    <script src="{{ asset('build/js/jquery.min.js') }}"></script>
-    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
-    <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
-
-    <!-- Core JavaScript Files -->
-    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>-->
-    <script src="{{ asset('build/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
+  {# <script src="{{ asset('build/js/jquery.min.js') }}"></script>
+   <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('build/js/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('build/js/jquery.scrollTo.js') }}"></script>
     <script src="{{ asset('build/js/wow.min.js') }}"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('build/js/custom.js') }}"></script>
-    <script src="{{ asset('build/contactform/contactform.js') }}"></script>
+    <script src="{{ asset('build/js/custom.js') }}"></script>#}
 
+<script src=""></script>
 
+    <script src="/Sitecommunautaire/public/js/jquery-1.10.2.js"></script>
+    <script src="/Sitecommunautaire/public/js/bootstrap.min.js"></script>
+<script src="/Sitecommunautaire/public/js/jquery.easing.min.js"></script>
+<script src="/Sitecommunautaire/public/js/jquery.scrollTo.js"></script>
+<script src="/Sitecommunautaire/public/js/wow.min.js"></script>
+
+<script src="/Sitecommunautaire/public/js/custom.js"></script>
+<script src="/Sitecommunautaire/public/js/contactform.js"></script>-->
 
 {% endblock %}
 {% block js %}{% endblock %}
-
 </body>
 
 </html>

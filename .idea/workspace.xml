@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+    <list default="true" id="68556432-ab3e-40bc-bd0f-cb7572343c8d" name="Default Changelist" comment="" />
     <list default="true" id="68556432-ab3e-40bc-bd0f-cb7572343c8d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TrickController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TrickController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/view/listtrick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/view/listtrick.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -190,9 +189,6 @@
       <path value="$PROJECT_DIR$/vendor/php-cs-fixer/diff" />
       <path value="$PROJECT_DIR$/vendor/friendsofphp/php-cs-fixer" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
-      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-pack" />
-      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
-      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/templating" />
       <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
       <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
@@ -202,6 +198,8 @@
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/aalaap/faker-youtube" />
+      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1Sv8PZIdKcV7qS9UlMYBABmUC5B" />
@@ -209,25 +207,29 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="C:/xampp/htdocs/SIGES" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
+    <property name="nodejs_package_manager_path" value="C:/Program Files/nodejs/node_modules/npm" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xamppx64\htdocs\SiteCommunautaire\assets\css" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\xamppx64\htdocs\SiteCommunautaire\templates\view" />
+      <recent name="D:\xamppx64\htdocs\SiteCommunautaire\src\Form" />
       <recent name="G:\PROJETX64\htdocs\SiteCommunautaire\templates\view" />
       <recent name="G:\PROJETX64\htdocs\SiteCommunautaire\src\Form" />
       <recent name="G:\PROJETX64\htdocs\SiteCommunautaire\src\Repository" />
-      <recent name="G:\PROJETX64\htdocs\SiteCommunautaire\src\Entity" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="s cache:clear" />
       <command value="cache:clear --env=prod" />
       <command value="s doctrine:migrations:status" />
       <command value="s doctrine:migrations:migrate" />
@@ -238,12 +240,36 @@
       <command value="c require aalaap/faker-youtube" />
       <command value="s make:controller" />
       <command value="s make:entity Image" />
-      <command value="s cache:clear --env=&quot;dev&quot;" />
       <command value="s make:form" />
       <command value="s doctrine:schema:update --dump-sql" />
       <command value="s doctrine:schema:update --force" />
       <command value="s doctrine:migrations:generate" />
       <command value="s doctrine:fixtures:load" />
+      <command value="c require assets" />
+      <command value="npm run dev" />
+      <command value="npm" />
+      <command value=" npm run dev" />
+      <command value="npm install" />
+      <command value="yarn install" />
+      <command value="s npm run install" />
+      <command value="s yarn install" />
+      <command value="c require encore asset" />
+      <command value="c require webpack-encore-bundle" />
+      <command value="s npm install" />
+      <command value="s npm run dev" />
+      <command value="s encore dev" />
+      <command value="s assets:install" />
+      <command value=" c require symfony/apache-pack" />
+      <command value="s cache:clear --env=&quot;dev&quot;" />
+      <command value="c require symfony/apache-pack" />
+      <command value="c require encore" />
+      <command value="c require asset" />
+      <command value="c require symfony/webpack-encore" />
+      <command value=" c require symfony/webpack-encore-bundle" />
+      <command value="s cache:clear" />
+      <command value="c require symfony/webpack-encore-bundle" />
+      <command value="s make:entity Contact" />
+      <command value="s swiftmailer:email:send" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -258,11 +284,53 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.jquery-1.10.2.js">
+    <configuration name="jquery-1.10.2.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/assets/js/jquery-1.10.2.js" working-dir="$PROJECT_DIR$/assets/js">
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev-server" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev-server" />
+      </scripts>
+      <node-interpreter value="project" />
+      <package-manager value="$PROJECT_DIR$" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.dev-server" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="Node.js.jquery-1.10.2.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -346,7 +414,17 @@
       <workItem from="1573617260189" duration="318000" />
       <workItem from="1573636404703" duration="20708000" />
       <workItem from="1573710934672" duration="4881000" />
-      <workItem from="1573721106942" duration="16652000" />
+      <workItem from="1573721106942" duration="16105000" />
+      <workItem from="1573760101160" duration="1520000" />
+      <workItem from="1573824949079" duration="596000" />
+      <workItem from="1574081787822" duration="17836000" />
+      <workItem from="1574157684820" duration="25660000" />
+      <workItem from="1574234937660" duration="658000" />
+      <workItem from="1574235747113" duration="4768000" />
+      <workItem from="1574240549230" duration="25967000" />
+      <workItem from="1574271822716" duration="2325000" />
+      <workItem from="1574275597483" duration="24851000" />
+      <workItem from="1574362563643" duration="4130000" />
     </task>
     <servers />
   </component>
@@ -385,12 +463,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/view/showtrick.html.twig</url>
-          <line>98</line>
+          <line>106</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/view/editcomment.html.twig</url>
+          <line>10</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/view/pagination.html.twig</url>
+          <line>1</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/build/js/trick.js</url>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/src/Controller/TrickController.php</url>
+          <line>230</line>
+          <properties>
+            <option name="className" value="\App\Controller\TrickController" />
+            <option name="methodName" value="deletecomment" />
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
